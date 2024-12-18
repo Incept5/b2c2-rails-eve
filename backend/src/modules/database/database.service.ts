@@ -1,22 +1,20 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, OnModuleInit, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import knex, { Knex } from 'knex';
-import { LoggingService } from '../logging/logging.service';
 
 @Injectable()
 export class DatabaseService implements OnModuleInit {
   private knexInstance: Knex;
-  private readonly context = 'DatabaseService';
+  private readonly logger = new Logger(DatabaseService.name);
   private readonly knexConfig: Knex.Config;
 
   constructor(
-    private configService: ConfigService,
-    private logger: LoggingService
+    private configService: ConfigService
   ) {
     this.knexConfig = this.configService.get('database');
     this.knexInstance = knex(this.knexConfig);
     
-    this.logger.info(this.context, 'Database service initialized', {
+    this.logger.log('Database service initialized', {
       config: this.knexConfig,
       environment: process.env.NODE_ENV || 'dev'
     });
@@ -24,25 +22,25 @@ export class DatabaseService implements OnModuleInit {
 
   async onModuleInit() {
     try {
-      this.logger.info(this.context, 'Starting database migrations')
+      this.logger.log('Starting database migrations');
       const [batchNo, log] = await this.knexInstance.migrate.latest();
-      this.logger.info(this.context, 'Database migrations completed successfully', {
+      this.logger.log('Database migrations completed successfully', {
         batchNumber: batchNo,
         migrationsRun: log
       });
     } catch (error) {
-      this.logger.error(this.context, 'Failed to run database migrations', error.stack);
+      this.logger.error('Failed to run database migrations', error.stack);
       throw error;
     }
   }
 
   async onShutdown() {
     try {
-      this.logger.info(this.context, 'Shutting down database connection');
+      this.logger.log('Shutting down database connection');
       await this.knexInstance.destroy();
-      this.logger.info(this.context, 'Database connection closed successfully');
+      this.logger.log('Database connection closed successfully');
     } catch (error) {
-      this.logger.error(this.context, 'Error shutting down database connection', error.stack);
+      this.logger.error('Error shutting down database connection', error.stack);
       throw error;
     }
   }

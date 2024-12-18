@@ -1,0 +1,24 @@
+{
+  "spec": "remove the winston logging and just use the standard nestjs logging",
+  "commitMessage": "Removed winston logging in favor of NestJS built-in logger\n\n- Removed winston and winston-daily-rotate-file dependencies\n- Deleted LoggingModule and LoggingService\n- Updated DatabaseService and MonitoringService to use NestJS Logger\n- Configured NestJS logger in main.ts\n- Removed LoggingModule from AppModule",
+  "stats": {
+    "inputTokens": 105108,
+    "cacheWriteTokens": 6138,
+    "cacheReadTokens": 135036,
+    "outputTokens": 3884,
+    "totalTokens": null,
+    "cost": 0.32783422500000003,
+    "currency": "gbp",
+    "processingMillis": 228749,
+    "git": {
+      "filesChanged": 9,
+      "insertions": 27,
+      "deletions": 294,
+      "linesChanged": 294,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

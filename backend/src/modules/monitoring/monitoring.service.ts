@@ -1,28 +1,27 @@
-import { Injectable } from '@nestjs/common';
-import { LoggingService } from '../logging/logging.service';
+import { Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
 export class MonitoringService {
-  private readonly context = 'MonitoringService';
+  private readonly logger = new Logger(MonitoringService.name);
 
-  constructor(private logger: LoggingService) {
-    this.logger.info(this.context, 'Monitoring service initialized');
+  constructor() {
+    this.logger.log('Monitoring service initialized');
   }
 
   getHealth() {
-    this.logger.info(this.context, 'Health check requested');
+    this.logger.log('Health check requested');
     const health = {
       status: 'ok',
       timestamp: new Date().toISOString(),
     };
-    this.logger.info(this.context, 'Health check response', health);
+    this.logger.log('Health check response', health);
     return health;
   }
 
   shutdown() {
-    this.logger.info(this.context, 'Application shutdown requested');
+    this.logger.log('Application shutdown requested');
     setTimeout(() => {
-      this.logger.info(this.context, 'Executing application shutdown');
+      this.logger.log('Executing application shutdown');
       process.exit(0);
     }, 100);
     return { message: 'Application shutdown initiated' };

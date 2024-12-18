@@ -1,0 +1,24 @@
+{
+  "spec": "update the test rest client (and all affected tests) so that it:\na) returns the full response and not just the body (to allow clients to check error conditions etc)\nb) can store an auth token and therefore set it on each subsequent request (Authorization header as Bearer token)",
+  "commitMessage": "Updated RestClient to return full response and support auth token\n\n- Modified RestClient to store and use auth tokens\n- Updated HTTP methods to return full response instead of just body\n- Added setAuthToken and clearAuthToken methods\n- Updated test-auth utility to work with new response format\n- Updated e2e tests to check response status codes",
+  "stats": {
+    "inputTokens": 52725,
+    "cacheWriteTokens": 9109,
+    "cacheReadTokens": 91090,
+    "outputTokens": 4076,
+    "totalTokens": null,
+    "cost": 0.2106005625,
+    "currency": "gbp",
+    "processingMillis": 104473,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 43,
+      "deletions": 36,
+      "linesChanged": 43,
+      "testFilesChanged": 3,
+      "testInsertions": 43,
+      "testDeletions": 36,
+      "testLinesChanged": 43
+    }
+  }
+}

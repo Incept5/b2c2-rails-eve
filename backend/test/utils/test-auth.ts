@@ -10,23 +10,26 @@ export interface TestUser {
 export async function ensureTestUser(client: RestClient, email: string = 'test@example.com'): Promise<TestUser> {
   try {
     // First try to find existing user
-    const users = await client.get(`/api/users?email=${encodeURIComponent(email)}`);
+    const usersResponse = await client.get(`/api/users?email=${encodeURIComponent(email)}`);
+    const users = usersResponse.body;
 
     console.log('users found:', users);
     
     if (users && Array.isArray(users) && users.length > 0) {
       const existingUser = users[0];
       // User exists, get auth token
-      const auth = await client.post('/api/auth/token', {
+      const authResponse = await client.post('/api/auth/token', {
         email,
         password: 'test1234',
         grant_type: 'password'
       });
 
+      const auth = authResponse.body;
       if (!auth || !auth.access_token) {
         throw new Error('Failed to get auth token');
       }
 
+      client.setAuthToken(auth.access_token);
       return {
         id: existingUser.id,
         email: existingUser.email,
@@ -36,16 +39,18 @@ export async function ensureTestUser(client: RestClient, email: string = 'test@e
     }
 
     // Create new test user
-    const auth = await client.post('/api/auth/signup', {
+    const authResponse = await client.post('/api/auth/signup', {
       email,
       name: 'Test User',
       password: 'test1234'
     });
 
+    const auth = authResponse.body;
     if (!auth || !auth.access_token || !auth.user_id) {
       throw new Error('Failed to create test user');
     }
 
+    client.setAuthToken(auth.access_token);
     return {
       id: auth.user_id,
       email,

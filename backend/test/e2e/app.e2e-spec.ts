@@ -35,7 +35,8 @@ describe('AppController (e2e)', () => {
 
   it('/api/monitoring/health (GET)', async () => {
     const response = await client.get('/api/monitoring/health');
-    expect(response.status).toBe('ok');
+    expect(response.status).toBe(200);
+    expect(response.body.status).toBe('ok');
   });
 
   it('should support user authentication flow', async () => {
@@ -44,18 +45,21 @@ describe('AppController (e2e)', () => {
     expect(testUser.accessToken).toBeDefined();
 
     // Verify can get token with password grant
-    const auth = await client.post('/api/auth/token', {
+    const authResponse = await client.post('/api/auth/token', {
       email: testUser.email,
       password: 'test1234',
       grant_type: 'password'
     });
-    expect(auth.access_token).toBeDefined();
-    expect(auth.user_id).toBe(testUser.id);
+    expect(authResponse.status).toBe(201);
+    expect(authResponse.body.access_token).toBeDefined();
+    expect(authResponse.body.user_id).toBe(testUser.id);
   });
 
   it('/api/docs-json (GET) should return valid OpenAPI schema', async () => {
-    const schema = await client.get('/api/docs-json');
+    const response = await client.get('/api/docs-json');
+    expect(response.status).toBe(200);
     
+    const schema = response.body;
     // Verify basic OpenAPI schema structure
     expect(schema).toBeDefined();
     expect(schema.openapi).toBeDefined();

@@ -42,8 +42,9 @@
   ```
 
 ### Testing
-- Focus on end-to-end (e2e) tests for happy path scenarios
+- Focus on simple end-to-end (e2e) tests for happy path scenarios (no unit tests required for now)
 - Place e2e tests in `backend/test` directory
+- Do not use fixtures or mocks in e2e tests - test the real API
 - Example test structure:
   ```typescript
   describe('YourFeature (e2e)', () => {

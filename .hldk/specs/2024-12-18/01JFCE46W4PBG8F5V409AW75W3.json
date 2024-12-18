@@ -1,0 +1,24 @@
+{
+  "spec": "update app test to use the new rest client util class",
+  "commitMessage": "refactor: update e2e test to use RestClient utility class\n\n- Removed direct supertest usage\n- Added RestClient instance\n- Updated test to use RestClient methods\n- Added better test assertions",
+  "stats": {
+    "inputTokens": 4647,
+    "cacheWriteTokens": 5451,
+    "cacheReadTokens": 16353,
+    "outputTokens": 842,
+    "totalTokens": null,
+    "cost": 0.038938612500000004,
+    "currency": "gbp",
+    "processingMillis": 15801,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 95,
+      "deletions": 6,
+      "linesChanged": 95,
+      "testFilesChanged": 2,
+      "testInsertions": 111,
+      "testDeletions": 0,
+      "testLinesChanged": 111
+    }
+  }
+}

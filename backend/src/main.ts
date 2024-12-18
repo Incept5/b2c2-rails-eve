@@ -35,10 +35,10 @@ async function bootstrap() {
 
   // Handle frontend routing - serve index.html for non-API routes
   app.use('*', (req, res, next) => {
-    if (!req.path.startsWith('/api')) {
-      res.sendFile(join(frontendPath, 'index.html'));
-    } else {
+    if (req.path.startsWith('/api')) {
       next();
+    } else {
+      res.sendFile(join(frontendPath, 'index.html'));
     }
   });
 

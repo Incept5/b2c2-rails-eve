@@ -1,0 +1,24 @@
+{
+  "spec": "there seems to be a bug... doing a POST to http://localhost:3000/api/auth/signup \ndoesn't hit the auth controller... instead the homepage of the frontend is returned",
+  "commitMessage": "Fixed auth controller route prefix and main.ts route handling",
+  "stats": {
+    "inputTokens": 20983,
+    "cacheWriteTokens": 9019,
+    "cacheReadTokens": 54114,
+    "outputTokens": 989,
+    "totalTokens": null,
+    "cost": 0.0958795875,
+    "currency": "gbp",
+    "processingMillis": 38719,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 4,
+      "deletions": 4,
+      "linesChanged": 4,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

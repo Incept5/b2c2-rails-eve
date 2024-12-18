@@ -23,7 +23,7 @@ async function bootstrap() {
   swaggerService.setup(app);
 
   // Serve static frontend files
-  const frontendPath = join(__dirname, '../../frontend/build');
+  const frontendPath = join(__dirname, '../../frontend/dist');
   app.use(express.static(frontendPath));
 
   // Handle frontend routing - serve index.html for non-API routes

@@ -1,0 +1,24 @@
+{
+  "spec": "remove husky from frontend",
+  "commitMessage": "Remove husky from frontend\n\n- Removed husky package from devDependencies\n- Removed husky prepare script\n- Removed .husky configuration directory",
+  "stats": {
+    "inputTokens": 13704,
+    "cacheWriteTokens": 8051,
+    "cacheReadTokens": 40255,
+    "outputTokens": 825,
+    "totalTokens": null,
+    "cost": 0.0718160625,
+    "currency": "gbp",
+    "processingMillis": 21782,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 1,
+      "deletions": 3,
+      "linesChanged": 3,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

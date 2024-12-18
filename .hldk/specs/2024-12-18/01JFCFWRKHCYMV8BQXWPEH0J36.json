@@ -1,0 +1,24 @@
+{
+  "spec": "Something is wrong with our buildAndRestart.sh script as the service is not actually starting up again:\n\n(base) adam ~/dev/higherleveldev/fullstack-starter [main] $ ./buildAndRestart.sh \n📂 Changed to backend directory\n📦 Installing dependencies...\n WARN  using --force I sure hope you know what you are doing\nLockfile is up to date, resolution step is skipped\nPackages: +793\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 793, reused 792, downloaded 0, added 793, done\nDone in 5.3s\n✅ Dependencies installed successfully\n🔨 Building project...\n\n> backend@0.0.1 build /Users/adam/dev/higherleveldev/fullstack-starter/backend\n> nest build\n\n✅ Build completed successfully\n✨ Build process completed successfully\n🛑 Stopping backend services...\n🔍 Checking if backend is running...\n⚠️  Graceful shutdown failed or timed out\n⚠️  Attempting force stop of backend processes...\n✅ Backend processes forcefully stopped\n✨ Build and restart process completed successfully",
+  "commitMessage": "Fixed restart.sh script to properly start backend service in production mode\n\n- Added proper production mode startup with NODE_ENV=production\n- Using nohup to keep process running after script exits\n- Redirecting output to logs/backend.log\n- Storing PID in backend.pid file\n- Added better startup check with 30-second timeout\n- Created logs directory for output logging",
+  "stats": {
+    "inputTokens": 8658,
+    "cacheWriteTokens": 6128,
+    "cacheReadTokens": 30640,
+    "outputTokens": 1160,
+    "totalTokens": null,
+    "cost": 0.0566595,
+    "currency": "gbp",
+    "processingMillis": 22604,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 17,
+      "deletions": 12,
+      "linesChanged": 17,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

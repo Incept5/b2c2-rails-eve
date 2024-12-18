@@ -1,0 +1,24 @@
+{
+  "spec": "we can't use that mechanism. instead add a new module called monitoring with a GET for health and and POST for /shutdown which shuts down the app",
+  "commitMessage": "Add monitoring module with health check and shutdown endpoints",
+  "stats": {
+    "inputTokens": 4818,
+    "cacheWriteTokens": 4873,
+    "cacheReadTokens": 24365,
+    "outputTokens": 1109,
+    "totalTokens": null,
+    "cost": 0.0425041875,
+    "currency": "gbp",
+    "processingMillis": 21429,
+    "git": {
+      "filesChanged": 4,
+      "insertions": 46,
+      "deletions": 1,
+      "linesChanged": 46,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

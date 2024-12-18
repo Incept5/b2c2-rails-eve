@@ -58,6 +58,22 @@
   });
   ```
 
+### Database Development
+- The application uses Knex.js for database operations and migrations
+- Database configuration is environment-based:
+  - test: In-memory SQLite
+  - dev: SQLite file (dev.sqlite3 in repo root)
+  - prod: PostgreSQL (localhost:5432)
+- Migrations must be compatible with both SQLite and PostgreSQL:
+  - Avoid using database-specific features
+  - Test migrations against both databases
+  - Place migrations in `backend/src/migrations`
+  - Use timestamp-prefixed names (YYYYMMDDHHMMSS_description.ts)
+- Database connections are automatically:
+  - Established on application startup
+  - Migrations are run on startup
+  - Connections are properly closed on shutdown
+
 ### Best Practices
 - Use TypeScript DTOs for request/response validation
 - Implement proper error handling

@@ -6,23 +6,28 @@ import { Input } from '../../components/ui/input'
 import { Card } from '../../components/ui/card'
 import { useToast } from '../../hooks/use-toast'
 import { getThemeClass } from '../../lib/theme'
+import { Alert, AlertDescription } from '../../components/ui/alert'
 
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [formError, setFormError] = useState('')
   const { login } = useAuth()
   const navigate = useNavigate()
   const { toast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setFormError('')
     try {
       await login(email, password)
       navigate('/')
-    } catch (error) {
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.message || 'Invalid email or password'
+      setFormError(errorMessage)
       toast({
         title: 'Error',
-        description: 'Invalid email or password',
+        description: errorMessage,
         variant: 'destructive',
       })
     }
@@ -53,6 +58,11 @@ export function LoginPage() {
               className={getThemeClass('components.input.base')}
             />
           </div>
+          {formError && (
+            <Alert variant="destructive" className="mt-4">
+              <AlertDescription>{formError}</AlertDescription>
+            </Alert>
+          )}
           <Button type="submit" className={`w-full ${getThemeClass('components.button.primary')}`}>
             Login
           </Button>

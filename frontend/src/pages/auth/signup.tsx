@@ -29,9 +29,9 @@ export function SignupPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <Card className="w-full max-w-md p-6">
-        <h1 className="mb-6 text-2xl font-bold">Sign Up</h1>
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <Card className="w-full max-w-md p-6 border-border bg-card text-card-foreground shadow-lg">
+        <h1 className="mb-6 text-2xl font-bold text-primary">Sign Up</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <Input
@@ -40,6 +40,7 @@ export function SignupPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
+              className="bg-background border-input"
             />
           </div>
           <div>
@@ -49,6 +50,7 @@ export function SignupPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="bg-background border-input"
             />
           </div>
           <div>
@@ -58,15 +60,16 @@ export function SignupPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="bg-background border-input"
             />
           </div>
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
             Sign Up
           </Button>
         </form>
-        <p className="mt-4 text-center">
+        <p className="mt-4 text-center text-muted-foreground">
           Already have an account?{' '}
-          <Button variant="link" onClick={() => navigate('/login')}>
+          <Button variant="link" onClick={() => navigate('/login')} className="text-primary">
             Login
           </Button>
         </p>

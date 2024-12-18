@@ -28,9 +28,9 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <Card className="w-full max-w-md p-6">
-        <h1 className="mb-6 text-2xl font-bold">Login</h1>
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <Card className="w-full max-w-md p-6 border-border bg-card text-card-foreground shadow-lg">
+        <h1 className="mb-6 text-2xl font-bold text-primary">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <Input
@@ -39,6 +39,7 @@ export function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="bg-background border-input"
             />
           </div>
           <div>
@@ -48,15 +49,16 @@ export function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="bg-background border-input"
             />
           </div>
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
             Login
           </Button>
         </form>
-        <p className="mt-4 text-center">
+        <p className="mt-4 text-center text-muted-foreground">
           Don't have an account?{' '}
-          <Button variant="link" onClick={() => navigate('/signup')}>
+          <Button variant="link" onClick={() => navigate('/signup')} className="text-primary">
             Sign up
           </Button>
         </p>

@@ -2,7 +2,7 @@
 
 # Function to check if backend is running and healthy
 check_backend() {
-    if curl -s http://localhost:3000/monitoring/health > /dev/null; then
+    if curl -s http://localhost:3000/api/monitoring/health > /dev/null; then
         return 0
     else
         return 1
@@ -14,7 +14,7 @@ stop_backend() {
     echo "🔍 Checking if backend is running..."
     if check_backend; then
         echo "📋 Backend process found, stopping it..."
-        curl -s -X POST http://localhost:3000/monitoring/shutdown
+        curl -s -X POST http://localhost:3000/api/monitoring/shutdown
         sleep 3
         if check_backend; then
             echo "❌ Failed to stop backend process"

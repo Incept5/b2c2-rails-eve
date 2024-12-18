@@ -11,12 +11,9 @@ interface SignupCredentials extends LoginCredentials {
 }
 
 interface AuthResponse {
-  token: string
-  user: {
-    id: string
-    email: string
-    name: string
-  }
+  access_token: string
+  user_id: string
+  expires: string
 }
 
 export class AuthService {
@@ -41,8 +38,8 @@ export class AuthService {
 
     const data = await response.json()
     // Store the token and user data immediately
-    this.setToken(data.token)
-    this.setUser(data.user)
+    this.setToken(data.access_token)
+    this.setUser(data.user_id)
     return data
   }
 
@@ -61,8 +58,8 @@ export class AuthService {
 
     const data = await response.json()
     // Store the token and user data immediately
-    this.setToken(data.token)
-    this.setUser(data.user)
+    this.setToken(data.access_token)
+    this.setUser(data.user_id)
     return data
   }
 

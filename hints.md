@@ -19,8 +19,9 @@
   ```
 
 ### API Integration
+- The API is the source of truth - never modify the API to match the frontend, always update the frontend to match the API
 - Always read the corresponding backend controller and DTO files before implementing API calls
-- Use strongly typed request/response interfaces that match backend DTOs
+- Use strongly typed request/response interfaces that match backend DTOs exactly
 - Example API service structure:
   ```typescript
   interface CreateSomethingDto {

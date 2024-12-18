@@ -39,13 +39,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     const response = await AuthService.login({ email, password })
     setIsAuthenticated(true)
-    setUser(response.user)
+    setUser(response.user_id)
   }
 
   const signup = async (name: string, email: string, password: string) => {
     const response = await AuthService.signup({ name, email, password })
     setIsAuthenticated(true)
-    setUser(response.user)
+    setUser(response.user_id)
   }
 
   const logout = () => {

@@ -1,4 +1,4 @@
-import { Rocket, Globe2, Wrench, Zap } from 'lucide-react'
+import { Rocket, Globe2, Zap } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../ui/button'
 import { getThemeClass } from '../../lib/theme'
@@ -39,13 +39,7 @@ export const Hero = () => {
                     <h2 className="text-2xl font-bold text-white">{t('i18nsupport')}</h2>
                     <p className="text-white">{t('i18nsupport-desc')}</p>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 rounded-lg p-4">
-                    <div className="rounded-full bg-black p-4 text-white">
-                      <Wrench size={32} />
-                    </div>
-                    <h2 className="text-2xl font-bold text-white"> {t('linters')} </h2>
-                    <p className="text-white">{t('linters-desc')}</p>
-                  </div>
+
                 </div>
               </div>
             </div>

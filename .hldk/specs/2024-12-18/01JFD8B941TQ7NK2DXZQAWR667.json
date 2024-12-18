@@ -1,0 +1,24 @@
+{
+  "spec": "in the hero in the UI remove the linting stuff",
+  "commitMessage": "Remove linting section from hero component and related translations",
+  "stats": {
+    "inputTokens": 17153,
+    "cacheWriteTokens": 9109,
+    "cacheReadTokens": 72872,
+    "outputTokens": 1107,
+    "totalTokens": null,
+    "cost": 0.0930632625,
+    "currency": "gbp",
+    "processingMillis": 42871,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 2,
+      "deletions": 12,
+      "linesChanged": 12,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

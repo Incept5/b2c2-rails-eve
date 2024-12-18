@@ -1,12 +1,13 @@
 import { Rocket, Globe2, Wrench, Zap } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../ui/button'
+import { getThemeClass } from '../../lib/theme'
 
 export const Hero = () => {
   const { t } = useTranslation()
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-b from-blue-300 to-blue-500">
+    <div className={`flex min-h-screen ${getThemeClass('gradients.primary')}`}>
       <section className="w-full py-32 md:py-48">
         <div className="container px-4 md:px-6">
           <div className="grid items-center gap-6">

@@ -1,0 +1,24 @@
+{
+  "spec": "can we extract these things out so we can update the colours on one plase?",
+  "commitMessage": "Extract theme styles into a centralized configuration\n\n- Created new theme.ts file with centralized theme configuration\n- Added utility function getThemeClass for accessing theme styles\n- Updated Hero, Login, and Signup components to use theme configuration\n- Improved maintainability by centralizing color and style definitions",
+  "stats": {
+    "inputTokens": 93012,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 65992,
+    "outputTokens": 3580,
+    "totalTokens": null,
+    "cost": 0.26440020000000003,
+    "currency": "gbp",
+    "processingMillis": 58359,
+    "git": {
+      "filesChanged": 4,
+      "insertions": 77,
+      "deletions": 18,
+      "linesChanged": 77,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

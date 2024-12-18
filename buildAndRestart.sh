@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stop the server first
+./stop.sh
+
 # Build the project
 ./build.sh || { echo "❌ Build failed"; exit 1; }
 

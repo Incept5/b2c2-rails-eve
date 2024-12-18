@@ -31,15 +31,10 @@ async function bootstrap() {
   // Serve Swagger documentation at /api/docs
   SwaggerModule.setup('api/docs', app, document);
   
-  // Serve OpenAPI YAML at /api/docs-yaml
-  const expressApp = app.getHttpAdapter().getInstance();
-  expressApp.get('/api/docs-yaml', (req, res) => {
-    res.type('text/yaml').send(document);
-  });
-  
-  // Serve OpenAPI JSON at /api/docs-json
-  expressApp.get('/api/docs-json', (req, res) => {
-    res.json(document);
+  // Serve OpenAPI documentation
+  SwaggerModule.setup('api/docs', app, document, {
+    jsonDocumentUrl: '/api/docs-json',
+    yamlDocumentUrl: '/api/docs-yaml'
   });
 
   // Serve static frontend files

@@ -4,6 +4,7 @@ import { AppModule } from '../../src/app.module';
 import { RestClient } from '../utils/rest-client';
 import { TestLogger } from '../utils/test-logger';
 import { ensureTestUser } from '../utils/test-auth';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -18,6 +19,21 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     app.useLogger(logger);
+    
+    // Set up Swagger documentation
+    const config = new DocumentBuilder()
+      .setTitle('API Documentation')
+      .setDescription('The API description')
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build();
+    
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('api/docs', app, document, {
+      jsonDocumentUrl: '/api/docs-json',
+      yamlDocumentUrl: '/api/docs-yaml'
+    });
+    
     await app.init();
     client = new RestClient(app);
   });
@@ -45,5 +61,26 @@ describe('AppController (e2e)', () => {
     });
     expect(auth.access_token).toBeDefined();
     expect(auth.user_id).toBe(testUser.id);
+  });
+
+  it('/api/docs-json (GET) should return valid OpenAPI schema', async () => {
+    const schema = await client.get('/api/docs-json');
+    
+    // Verify basic OpenAPI schema structure
+    expect(schema).toBeDefined();
+    expect(schema.openapi).toBeDefined();
+    expect(schema.info).toBeDefined();
+    expect(schema.paths).toBeDefined();
+    
+    // Verify version follows semantic versioning
+    expect(schema.openapi).toMatch(/^3\.\d+\.\d+$/);
+    
+    // Verify required OpenAPI fields
+    expect(schema.info.title).toBe('API Documentation');
+    expect(schema.info.version).toBe('1.0');
+    
+    // Verify we have some documented endpoints
+    expect(Object.keys(schema.paths)).toContain('/api/monitoring/health');
+    expect(Object.keys(schema.paths)).toContain('/api/auth/token');
   });
 });

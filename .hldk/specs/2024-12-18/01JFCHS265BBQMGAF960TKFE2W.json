@@ -1,0 +1,24 @@
+{
+  "spec": "update the logging configuration to use human readable format rather than json in the log files",
+  "commitMessage": "Update logging format to be human readable instead of JSON\n\n- Modified logging.service.ts to use a custom printf format\n- Logs now show timestamp, level, context, and message in a readable format\n- Additional metadata is pretty-printed on new lines when present",
+  "stats": {
+    "inputTokens": 5886,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 30720,
+    "outputTokens": 923,
+    "totalTokens": null,
+    "cost": 0.03053925,
+    "currency": "gbp",
+    "processingMillis": 33491,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 8,
+      "deletions": 5,
+      "linesChanged": 8,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

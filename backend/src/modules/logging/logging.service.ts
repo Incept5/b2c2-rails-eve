@@ -11,9 +11,12 @@ export class LoggingService {
     const isTest = process.env.NODE_ENV === 'test';
     const logsDir = isTest ? 'logs/test' : 'logs';
     
-    const format = winston.format.combine(
+    const humanReadableFormat = winston.format.combine(
       winston.format.timestamp(),
-      winston.format.json()
+      winston.format.printf(({ timestamp, level, message, context, ...meta }) => {
+        const metaStr = Object.keys(meta).length ? `\n${JSON.stringify(meta, null, 2)}` : '';
+        return `${timestamp} [${level.toUpperCase()}] [${context}] ${message}${metaStr}`;
+      })
     );
 
     const fileTransport = new winston.transports.DailyRotateFile({
@@ -22,12 +25,12 @@ export class LoggingService {
       datePattern: 'YYYY-MM-DD',
       maxSize: '20m',
       maxFiles: '14d',
-      format,
+      format: humanReadableFormat,
     });
 
     this.logger = winston.createLogger({
       level: 'info',
-      format,
+      format: humanReadableFormat,
       transports: [
         fileTransport,
         new winston.transports.Console({

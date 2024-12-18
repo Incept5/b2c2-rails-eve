@@ -18,7 +18,7 @@ export const databaseConfig = registerAs('database', () => {
     dev: {
       client: 'sqlite3',
       connection: {
-        filename: path.join(process.cwd(), '../../dev.sqlite3'),
+        filename: path.join(process.cwd(), './dev.sqlite3'),
       },
       useNullAsDefault: true,
       migrations: {

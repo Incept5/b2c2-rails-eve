@@ -14,20 +14,20 @@ export class DatabaseService implements OnModuleInit {
     this.knexConfig = this.configService.get('database');
     this.knexInstance = knex(this.knexConfig);
     
-    this.logger.log('Database service initialized', {
+    this.logger.log(`Database service initialized: ${JSON.stringify({
       config: this.knexConfig,
       environment: process.env.NODE_ENV || 'dev'
-    });
+    })}`);
   }
 
   async onModuleInit() {
     try {
       this.logger.log('Starting database migrations');
       const [batchNo, log] = await this.knexInstance.migrate.latest();
-      this.logger.log('Database migrations completed successfully', {
+      this.logger.log(`Database migrations completed successfully: ${JSON.stringify({
         batchNumber: batchNo,
         migrationsRun: log
-      });
+      })}`);
     } catch (error) {
       this.logger.error('Failed to run database migrations', error.stack);
       throw error;

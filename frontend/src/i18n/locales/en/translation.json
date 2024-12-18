@@ -1,0 +1,12 @@
+{
+  "title": "Higher Level Frontend Starter",
+  "features": "Features",
+  "modernstack": "Modern and efficient stack",
+  "modernstack-desc": "Built with Vite, React, Tailwind CSS, Shadcnui, and more",
+  "i18nsupport": "i18n support out of the box",
+  "i18nsupport-desc": "Ship your product with different languages natively",
+  "linters": "Lint all code at save",
+  "linters-desc": "Built with ESLint, Prettier, Stylelint, and Commitlint",
+  "hero-title": "Welcome to the Higher Level Frontend Starter",
+  "get-started": "Get Started"
+}

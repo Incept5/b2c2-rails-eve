@@ -1,0 +1,24 @@
+{
+  "spec": "convert to using pnpm instead of yarn",
+  "commitMessage": "chore: convert from yarn to pnpm\n\n- Removed yarn.lock\n- Updated build script to use pnpm\n- Generated pnpm-lock.yaml file",
+  "stats": {
+    "inputTokens": 9084,
+    "cacheWriteTokens": 5599,
+    "cacheReadTokens": 27995,
+    "outputTokens": 632,
+    "totalTokens": null,
+    "cost": 0.0495950625,
+    "currency": "gbp",
+    "processingMillis": 28062,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 7187,
+      "deletions": 1,
+      "linesChanged": 7187,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

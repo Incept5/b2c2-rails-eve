@@ -1,0 +1,24 @@
+{
+  "spec": "update the list of languages in the header to just be the 2 we have translations for",
+  "commitMessage": "Update language selector to only show English and French",
+  "stats": {
+    "inputTokens": 5814,
+    "cacheWriteTokens": 5856,
+    "cacheReadTokens": 23424,
+    "outputTokens": 554,
+    "totalTokens": null,
+    "cost": 0.0410544,
+    "currency": "gbp",
+    "processingMillis": 19657,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 1,
+      "deletions": 1,
+      "linesChanged": 1,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

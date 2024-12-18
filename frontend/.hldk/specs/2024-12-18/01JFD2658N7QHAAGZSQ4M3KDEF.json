@@ -1,0 +1,24 @@
+{
+  "spec": "remove the about page and the github link in the header",
+  "commitMessage": "Remove about page and GitHub link from header",
+  "stats": {
+    "inputTokens": 5281,
+    "cacheWriteTokens": 5868,
+    "cacheReadTokens": 23472,
+    "outputTokens": 878,
+    "totalTokens": null,
+    "cost": 0.0435447,
+    "currency": "gbp",
+    "processingMillis": 16719,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 0,
+      "deletions": 107,
+      "linesChanged": 107,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

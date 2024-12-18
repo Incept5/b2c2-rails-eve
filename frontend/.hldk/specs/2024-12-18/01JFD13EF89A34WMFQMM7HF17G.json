@@ -1,0 +1,24 @@
+{
+  "spec": "update the readme to reflect that we are using pnpm and not yarn",
+  "commitMessage": "docs: update README to reflect pnpm as the preferred package manager",
+  "stats": {
+    "inputTokens": 2562,
+    "cacheWriteTokens": 5890,
+    "cacheReadTokens": 11780,
+    "outputTokens": 378,
+    "totalTokens": null,
+    "cost": 0.029233125,
+    "currency": "gbp",
+    "processingMillis": 9527,
+    "git": {
+      "filesChanged": 20,
+      "insertions": 4,
+      "deletions": 158,
+      "linesChanged": 158,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

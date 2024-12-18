@@ -1,0 +1,24 @@
+{
+  "spec": "can you factor out a build.sh script also from all the scripts in the root",
+  "commitMessage": "Refactor: Extract common build steps into build.sh script\n\n- Created new build.sh script with common build steps\n- Updated buildAndRestart.sh to use build.sh\n- Updated test.sh to use build.sh\n- Made build.sh executable",
+  "stats": {
+    "inputTokens": 10606,
+    "cacheWriteTokens": 5466,
+    "cacheReadTokens": 38262,
+    "outputTokens": 1596,
+    "totalTokens": null,
+    "cost": 0.065800575,
+    "currency": "gbp",
+    "processingMillis": 27111,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 29,
+      "deletions": 26,
+      "linesChanged": 29,
+      "testFilesChanged": 1,
+      "testInsertions": 7,
+      "testDeletions": 12,
+      "testLinesChanged": 12
+    }
+  }
+}

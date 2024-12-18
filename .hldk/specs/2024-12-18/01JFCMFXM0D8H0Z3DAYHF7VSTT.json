@@ -1,0 +1,24 @@
+{
+  "spec": "add an auth module as follows:\n\nentitites: \nuser (id (ulid), email, name, passwordHash)\nknex migration\n\nuser repository with CRUD and findByEmail\nuser service with the same (bcrypt for password hashing)\nauth service for JWT creation\n\n/api/auth controller with\n/signup endpoint that takes email/password and returns a JWT access_token and user_id and expires (7 days)\n/token endpoint that supports password grant oauth flow\n\n/api/users?email=<email> controller to support finding existing user by email\ndto's as appropriate\n\nUpdate hints.md to mention that all entity ids should be ULIDs\n\nAdd an e2e util class for ensuring a test user exists (by email query) and if it doesn't then add one via signup - needs to return the user details and auth token (fetch auth token if user exists)... add method to app e2e test to verify test user can log in",
+  "commitMessage": "Added JWT authentication to the application.",
+  "stats": {
+    "inputTokens": 263854,
+    "cacheWriteTokens": 6157,
+    "cacheReadTokens": 209338,
+    "outputTokens": 8278,
+    "totalTokens": null,
+    "cost": 0.7512166125,
+    "currency": "gbp",
+    "processingMillis": 158926,
+    "git": {
+      "filesChanged": 17,
+      "insertions": 598,
+      "deletions": 43,
+      "linesChanged": 598,
+      "testFilesChanged": 3,
+      "testInsertions": 64,
+      "testDeletions": 5,
+      "testLinesChanged": 64
+    }
+  }
+}

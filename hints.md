@@ -81,3 +81,4 @@
 - Document API endpoints with clear descriptions
 - Use meaningful variable and function names
 - Keep modules focused and single-responsibility
+- All entity IDs should use ULIDs (Universally Unique Lexicographically Sortable Identifiers)

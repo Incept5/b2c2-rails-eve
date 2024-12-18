@@ -37,7 +37,7 @@ export class RestClient {
 
     const response = await req;
     this.logResponse(response);
-    return response;
+    return response.body;
   }
 
   async post(url: string, body?: any, headers?: Record<string, string>) {
@@ -52,7 +52,7 @@ export class RestClient {
 
     const response = await req.send(body);
     this.logResponse(response);
-    return response;
+    return response.body;
   }
 
   async put(url: string, body?: any, headers?: Record<string, string>) {
@@ -67,7 +67,7 @@ export class RestClient {
 
     const response = await req.send(body);
     this.logResponse(response);
-    return response;
+    return response.body;
   }
 
   async delete(url: string, headers?: Record<string, string>) {
@@ -82,6 +82,6 @@ export class RestClient {
 
     const response = await req;
     this.logResponse(response);
-    return response;
+    return response.body;
   }
 }

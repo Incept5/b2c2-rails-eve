@@ -47,16 +47,16 @@ async function bootstrap() {
   app.use((req, res, next) => {
     if (req.originalUrl.startsWith('/api')) {
       // Let Nest handle this as an API route
-      logger.log(`API request: ${req.method} ${req.originalUrl}`);
+      logger.log(`API request: ${req.method} ${req.originalUrl}`, 'Router', { url: req.originalUrl, method: req.method });
       return next();
     }
     // Else serve the frontend
-    logger.log(`Frontend request: ${req.method} ${req.originalUrl}`);
+    logger.log(`Frontend request: ${req.method} ${req.originalUrl}`, 'Router', { url: req.originalUrl, method: req.method });
     res.sendFile(join(frontendPath, 'index.html'));
   });
 
   const port = process.env.PORT ?? 3000;
   await app.listen(port);
-  logger.log(`Application is running on: http://localhost:${port}`);
+  logger.log(`Application is running on: http://localhost:${port}`, 'Bootstrap', { port });
 }
 bootstrap();

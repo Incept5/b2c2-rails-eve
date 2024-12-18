@@ -4,7 +4,7 @@ import { AppLogger } from './modules/logging/app.logger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as express from 'express';
 import { join } from 'path';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { SwaggerService } from './modules/swagger/swagger.service';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -19,23 +19,8 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   // Set up Swagger documentation
-  const config = new DocumentBuilder()
-    .setTitle('API Documentation')
-    .setDescription('The API description')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  
-  const document = SwaggerModule.createDocument(app, config);
-  
-  // Serve Swagger documentation at /api/docs
-  SwaggerModule.setup('api/docs', app, document);
-  
-  // Serve OpenAPI documentation
-  SwaggerModule.setup('api/docs', app, document, {
-    jsonDocumentUrl: '/api/docs-json',
-    yamlDocumentUrl: '/api/docs-yaml'
-  });
+  const swaggerService = app.get(SwaggerService);
+  swaggerService.setup(app);
 
   // Serve static frontend files
   const frontendPath = join(__dirname, '../../frontend/build');

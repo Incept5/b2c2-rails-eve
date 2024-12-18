@@ -6,6 +6,7 @@ import { DatabaseModule } from './modules/database/database.module';
 import { LoggingModule } from './modules/logging/logging.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
+import { SwaggerModule } from './modules/swagger/swagger.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     DatabaseModule,
     MonitoringModule,
     AuthModule,
+    SwaggerModule,
   ],
   providers: [
     {

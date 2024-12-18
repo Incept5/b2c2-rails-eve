@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Function to check if backend is running
+# Function to check if backend is running and healthy
 check_backend() {
-    if pgrep -f "node.*dist/main" > /dev/null; then
+    if curl -s http://localhost:3000/monitoring/health > /dev/null; then
         return 0
     else
         return 1
@@ -14,11 +14,17 @@ stop_backend() {
     echo "🔍 Checking if backend is running..."
     if check_backend; then
         echo "📋 Backend process found, stopping it..."
-        pkill -f "node.*dist/main"
-        sleep 2
+        curl -s -X POST http://localhost:3000/monitoring/shutdown
+        sleep 3
         if check_backend; then
             echo "❌ Failed to stop backend process"
-            exit 1
+            # Fallback to force kill if graceful shutdown fails
+            pkill -f "node.*dist/main"
+            sleep 2
+            if check_backend; then
+                echo "❌ Failed to stop backend process even with force kill"
+                exit 1
+            fi
         else
             echo "✅ Backend process stopped successfully"
         fi

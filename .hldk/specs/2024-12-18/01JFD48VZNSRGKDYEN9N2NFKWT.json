@@ -1,0 +1,24 @@
+{
+  "spec": "update CORS policy in server to allow all API traffic from anywhere and for all methods - or just turn it off",
+  "commitMessage": "Enable CORS for all origins and methods in backend server",
+  "stats": {
+    "inputTokens": 3301,
+    "cacheWriteTokens": 8262,
+    "cacheReadTokens": 24786,
+    "outputTokens": 495,
+    "totalTokens": null,
+    "cost": 0.041809725,
+    "currency": "gbp",
+    "processingMillis": 26903,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 7,
+      "deletions": 0,
+      "linesChanged": 7,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

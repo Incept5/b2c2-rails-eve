@@ -1,0 +1,24 @@
+{
+  "spec": "auth.service.ts:77 Failed to parse user data from localStorage: SyntaxError: \"undefined\" is not valid JSON\n    at JSON.parse (<anonymous>)\n    at AuthService.getUser (auth.service.ts:75:19)\n    at initAuth (auth.context.tsx:24:38)\n    at auth.context.tsx:29:5\nindex.tsx:33 Uncaught TypeError: Cannot read properties of null (reading 'name')\n    at UserMenu (index.tsx:33:35)\ni18next.js?v=0c7bdcce:215 i18next::backendConnector: loaded namespace notfound for language en \n{oops: 'Oops!', title: 'Sorry, an unexpected error has occurred.', backtohomepage: 'Back to home page'}\nindex.tsx:33 Uncaught TypeError: Cannot read properties of null (reading 'name')\n    at UserMenu (index.tsx:33:35)\nindex.tsx:33 Uncaught TypeError: Cannot read properties of null (reading 'name')\n    at UserMenu (index.tsx:33:35)\nchunk-Z4APPW6Q.js?v=0c7bdcce:14052 The above error occurred in the <UserMenu> component:\n\n    at UserMenu (http://localhost:5001/src/components/user-menu/index.tsx?t=1734537010777:28:7)\n    at div\n    at div\n    at Header (http://localhost:5001/src/components/header/index.tsx?t=1734537002721:24:7)\n    at div\n    at RenderedRoute (http://localhost:5001/node_modules/.vite/deps/react-router-dom.js?v=0c7bdcce:4084:5)\n    at RenderErrorBoundary (http://localhost:5001/node_modules/.vite/deps/react-router-dom.js?v=0c7bdcce:4044:5)\n    at DataRoutes (http://localhost:5001/node_modules/.vite/deps/react-router-dom.js?v=0c7bdcce:5239:5)\n    at Router (http://localhost:5001/node_modules/.vite/deps/react-router-dom.js?v=0c7bdcce:4498:15)\n    at RouterProvider (http://localhost:5001/node_modules/.vite/deps/react-router-dom.js?v=0c7bdcce:5053:5)\n    at AuthProvider (http://localhost:5001/src/lib/auth.context.tsx?t=1734537010777:21:3)\n    at QueryClientProvider (http://localhost:5001/node_modules/.vite/deps/chunk-T7YKUEBR.js?v=0c7bdcce:2789:3)\n    at App (http://localhost:5001/src/app.tsx?t=1734537010777:26:23)\n\nReact will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.\nreact-router-dom.js?v=0c7bdcce:4071 React Router caught the following error during render TypeError: Cannot read properties of null (reading 'name')\n    at UserMenu (index.tsx:33:35)\n \n{componentStack: '\\n    at UserMenu (http://localhost:5001/src/compon…localhost:5001/src/app.tsx?t=1734537010777:26:23)'}",
+  "commitMessage": "Fix user menu null reference errors and improve auth state handling\n\n- Add null checks in UserMenu component to prevent errors when user data is null\n- Improve auth state initialization to ensure both token and user data are valid\n- Add fallback values for user name and email in UserMenu\n- Clear auth state when user data is invalid",
+  "stats": {
+    "inputTokens": 16592,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 54522,
+    "outputTokens": 1402,
+    "totalTokens": null,
+    "cost": 0.06537195,
+    "currency": "gbp",
+    "processingMillis": 26481,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 18,
+      "deletions": 6,
+      "linesChanged": 18,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

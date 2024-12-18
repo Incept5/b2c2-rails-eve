@@ -19,10 +19,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Initialize auth state
     const initAuth = () => {
       const isAuth = AuthService.isAuthenticated()
-      setIsAuthenticated(isAuth)
-      if (isAuth) {
-        const userData = AuthService.getUser()
+      const userData = AuthService.getUser()
+      
+      // Only set authenticated if we have both a token and valid user data
+      if (isAuth && userData) {
+        setIsAuthenticated(true)
         setUser(userData)
+      } else {
+        // If we don't have both, clear the auth state
+        AuthService.logout()
+        setIsAuthenticated(false)
+        setUser(null)
       }
     }
     

@@ -39,19 +39,30 @@ force_stop_backend() {
     fi
 }
 
-# Main execution
-echo "🛑 Stopping backend services..."
+# Main stop function that orchestrates the stopping process
+main_stop() {
+    echo "🛑 Stopping backend services..."
 
-# Try graceful shutdown first
-if stop_backend_gracefully; then
-    exit 0
-fi
+    # Try graceful shutdown first
+    if stop_backend_gracefully; then
+        return 0
+    fi
 
-# If graceful shutdown failed, try force stop
-echo "⚠️  Graceful shutdown failed or timed out"
-if force_stop_backend; then
-    exit 0
-else
-    echo "❌ Failed to stop backend processes"
-    exit 1
+    # If graceful shutdown failed, try force stop
+    echo "⚠️  Graceful shutdown failed or timed out"
+    if force_stop_backend; then
+        return 0
+    else
+        echo "❌ Failed to stop backend processes"
+        return 1
+    fi
+}
+
+# Only run the main function if this script is being run directly (not sourced)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    if main_stop; then
+        exit 0
+    else
+        exit 1
+    fi
 fi

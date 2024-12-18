@@ -8,10 +8,8 @@ cd backend || { echo "❌ Failed to change to backend directory"; exit 1; }
 echo "📂 Changed to backend directory"
 
 # Stop any running backend process using the stop script's functions
-if stop_backend_gracefully; then
-    echo "✅ Backend stopped gracefully"
-elif force_stop_backend; then
-    echo "✅ Backend force stopped"
+if main_stop; then
+    echo "✅ Backend stopped successfully"
 else
     echo "❌ Failed to stop backend"
     exit 1

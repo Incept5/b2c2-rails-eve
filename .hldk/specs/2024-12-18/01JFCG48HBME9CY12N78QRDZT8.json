@@ -1,0 +1,24 @@
+{
+  "spec": "There is a problem in the restart script.. it sources from stop.sh but then calls methods which exit the restart script... but we don't want to exit the restart script after stopping... we need to continue to do the starting part",
+  "commitMessage": "Fixed stop.sh and restart.sh scripts to prevent premature exit when sourcing stop.sh functions\n\n- Moved main stop logic in stop.sh to a separate function main_stop()\n- Added check to only run main_stop when script is run directly\n- Updated restart.sh to use main_stop function instead of individual stop functions\n- This prevents the sourced stop.sh from exiting the restart script prematurely",
+  "stats": {
+    "inputTokens": 8315,
+    "cacheWriteTokens": 6132,
+    "cacheReadTokens": 24528,
+    "outputTokens": 2118,
+    "totalTokens": null,
+    "cost": 0.0653013,
+    "currency": "gbp",
+    "processingMillis": 33013,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 26,
+      "deletions": 17,
+      "linesChanged": 26,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

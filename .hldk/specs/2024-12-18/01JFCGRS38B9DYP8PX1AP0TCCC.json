@@ -1,0 +1,24 @@
+{
+  "spec": "simplify the restart.sh script to just use pnpm run start &\nso we can see the regular console output and only wait 5 secs",
+  "commitMessage": "Simplified restart.sh script to use pnpm run start with visible console output and 5 second wait",
+  "stats": {
+    "inputTokens": 2198,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 18432,
+    "outputTokens": 859,
+    "totalTokens": null,
+    "cost": 0.01875645,
+    "currency": "gbp",
+    "processingMillis": 14440,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 7,
+      "deletions": 15,
+      "linesChanged": 15,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

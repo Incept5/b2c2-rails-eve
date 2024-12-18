@@ -15,22 +15,14 @@ else
     exit 1
 fi
 
-# Start the backend in production mode
-echo "🚀 Starting backend in production mode..."
-NODE_ENV=production nohup pnpm run start:prod > ../logs/backend.log 2>&1 &
+# Start the backend in development mode
+echo "🚀 Starting backend..."
+pnpm run start &
 PID=$!
 echo $PID > ../backend.pid
 echo "📝 Backend started with PID: $PID"
 
-# Wait for backend to start
-echo "⏳ Waiting for backend to start..."
-for i in {1..30}; do
-    if check_backend; then
-        echo "✅ Backend started successfully"
-        exit 0
-    fi
-    sleep 1
-done
-
-echo "❌ Backend failed to start within timeout"
-exit 1
+# Wait briefly for backend to start
+echo "⏳ Waiting 5 seconds for backend to start..."
+sleep 5
+echo "✅ Backend startup wait complete"

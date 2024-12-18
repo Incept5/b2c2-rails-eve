@@ -1,5 +1,100 @@
 # Development Hints & Guidelines
 
+## Frontend Development
+
+### Project Structure
+- All frontend code should be placed under `frontend/src`
+- Components should be organized by feature or domain
+- Reusable UI components should be placed in `frontend/src/components/ui`
+- Follow this structure for new features:
+  ```
+  frontend/src/
+  ├── pages/your-feature/
+  │   └── index.tsx
+  ├── components/your-feature/
+  │   ├── feature-component.tsx
+  │   └── sub-components/
+  └── lib/your-feature/
+      └── your-feature.service.ts
+  ```
+
+### API Integration
+- Always read the corresponding backend controller and DTO files before implementing API calls
+- Use strongly typed request/response interfaces that match backend DTOs
+- Example API service structure:
+  ```typescript
+  interface CreateSomethingDto {
+    // Copy types from backend DTO
+  }
+
+  export class YourFeatureService {
+    async createSomething(dto: CreateSomethingDto) {
+      return api.post('/api/your-feature', dto);
+    }
+  }
+  ```
+
+### Internationalization (i18n)
+- All UI text must be added to translation files for both English and French
+- Place translations in:
+  - `frontend/src/i18n/locales/en/translation.json`
+  - `frontend/src/i18n/locales/fr/translation.json`
+- Use nested keys for feature-specific translations
+- Example translation usage:
+  ```typescript
+  // In translation files:
+  {
+    "yourFeature": {
+      "title": "Feature Title",
+      "description": "Feature description"
+    }
+  }
+
+  // In components:
+  const { t } = useTranslation();
+  <h1>{t('yourFeature.title')}</h1>
+  ```
+
+### Component Development
+- Use shadcn/ui components from `components/ui` for consistent styling
+- Implement responsive designs using Tailwind CSS
+- Keep components focused and reusable
+- Use TypeScript for all component props
+- Example component structure:
+  ```typescript
+  interface FeatureProps {
+    data: YourDataType;
+    onAction: (id: string) => void;
+  }
+
+  export function FeatureComponent({ data, onAction }: FeatureProps) {
+    const { t } = useTranslation();
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>{t('yourFeature.title')}</CardTitle>
+        </CardHeader>
+      </Card>
+    );
+  }
+  ```
+
+### State Management
+- Use React Context for global state when needed
+- Prefer local state for component-specific data
+- Use custom hooks to encapsulate complex state logic
+- Follow existing patterns in `lib/auth.context.tsx`
+
+### Best Practices
+- Follow existing code style and formatting
+- Use meaningful component and variable names
+- Keep components focused and single-responsibility
+- Implement proper error handling and loading states
+- Use TypeScript for type safety
+- Add comments for complex logic
+- Follow existing patterns for routing and layouts
+- Use existing hooks from the `hooks` directory where applicable
+
 ## Backend Development
 
 ### Project Structure

@@ -1,0 +1,24 @@
+{
+  "spec": "update the hints file to reflect frontend dev best practices:\n\nwhen adding new code that interacts with the backend API always read the corresponding controller file and any necessary dto files to ensure we know exactly what the API is like\nalways add UI text/labels etc following the i18n pattern and provide translations for both english and french",
+  "commitMessage": "Updated hints.md with frontend development best practices including API integration and i18n guidelines",
+  "stats": {
+    "inputTokens": 3292,
+    "cacheWriteTokens": 8268,
+    "cacheReadTokens": 16536,
+    "outputTokens": 1042,
+    "totalTokens": null,
+    "cost": 0.04610385,
+    "currency": "gbp",
+    "processingMillis": 18878,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 95,
+      "deletions": 0,
+      "linesChanged": 95,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

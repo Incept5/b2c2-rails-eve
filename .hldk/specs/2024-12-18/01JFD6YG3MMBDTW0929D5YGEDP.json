@@ -1,0 +1,24 @@
+{
+  "spec": "Can we make additions to the backend to:\n\na) log every api request/response including payloads to debug\nb) validate each incoming request against the dto/schema via an annotation or globally (update auth controller)\nc) install a global error handler that will return an nice error if something weird happened",
+  "commitMessage": "Added request/response logging, validation and error handling improvements:\n\n1. Added request/response logging interceptor to log all API requests and responses\n2. Enhanced validation on DTOs using class-validator decorators\n3. Added global error handler to standardize error responses\n4. Updated logger to better handle structured logging with metadata",
+  "stats": {
+    "inputTokens": 314781,
+    "cacheWriteTokens": 9019,
+    "cacheReadTokens": 243513,
+    "outputTokens": 5538,
+    "totalTokens": null,
+    "cost": 0.8507161125,
+    "currency": "gbp",
+    "processingMillis": 156866,
+    "git": {
+      "filesChanged": 8,
+      "insertions": 223,
+      "deletions": 57,
+      "linesChanged": 223,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

@@ -24,41 +24,40 @@ export class AppLogger extends ConsoleLogger {
     );
   }
 
-  private writeToFile(message: any, logLevel: string, context?: string) {
+  private writeToFile(message: any, logLevel: string, context?: string, meta?: any) {
     const timestamp = new Date().toISOString();
     const contextMessage = context ? ` [${context}]` : '';
+    const formattedMessage = typeof message === 'string' ? message : JSON.stringify(message);
+    const metaString = meta ? `\n${JSON.stringify(meta, null, 2)}` : '';
+    
     this.fileLogger.write(
-      `${timestamp} ${logLevel}${contextMessage}: ${message}\n`
+      `${timestamp} ${logLevel}${contextMessage}: ${formattedMessage}${metaString}\n`
     );
   }
 
-  log(message: any, context?: string) {
+  log(message: any, context?: string, meta?: any) {
     super.log(message, context);
-    this.writeToFile(message, 'INFO', context);
+    this.writeToFile(message, 'INFO', context, meta);
   }
 
-  error(message: any, stack?: string, context?: string) {
-    super.error(message, stack, context);
-    this.writeToFile(
-      `${message}${stack ? `\n${stack}` : ''}`,
-      'ERROR',
-      context
-    );
+  error(message: any, meta?: any, context?: string) {
+    super.error(message, meta?.stack, context);
+    this.writeToFile(message, 'ERROR', context, meta);
   }
 
-  warn(message: any, context?: string) {
+  warn(message: any, context?: string, meta?: any) {
     super.warn(message, context);
-    this.writeToFile(message, 'WARN', context);
+    this.writeToFile(message, 'WARN', context, meta);
   }
 
-  debug(message: any, context?: string) {
+  debug(message: any, context?: string, meta?: any) {
     // Debug only goes to file, not console
-    this.writeToFile(message, 'DEBUG', context);
+    this.writeToFile(message, 'DEBUG', context, meta);
   }
 
-  verbose(message: any, context?: string) {
+  verbose(message: any, context?: string, meta?: any) {
     // Verbose only goes to file, not console
-    this.writeToFile(message, 'VERBOSE', context);
+    this.writeToFile(message, 'VERBOSE', context, meta);
   }
 
   onApplicationShutdown() {

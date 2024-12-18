@@ -5,6 +5,9 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import * as express from 'express';
 import { join } from 'path';
 import { SwaggerService } from './modules/swagger/swagger.service';
+import { RequestLoggerInterceptor } from './modules/logging/request-logger.interceptor';
+import { GlobalValidationPipe } from './modules/validation/validation.pipe';
+import { GlobalExceptionFilter } from './modules/error/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -22,8 +25,14 @@ async function bootstrap() {
   const logger = app.get(AppLogger);
   app.useLogger(logger);
 
-  // Set up API prefix for all backend routes
-  app.setGlobalPrefix('api');
+  // Set up global request logger interceptor
+  app.useGlobalInterceptors(new RequestLoggerInterceptor(logger));
+
+  // Set up global validation pipe
+  app.useGlobalPipes(new GlobalValidationPipe());
+
+  // Set up global error filter
+  app.useGlobalFilters(new GlobalExceptionFilter(logger));
 
   // Set up Swagger documentation
   const swaggerService = app.get(SwaggerService);
@@ -33,13 +42,17 @@ async function bootstrap() {
   const frontendPath = join(__dirname, '../../frontend/dist');
   app.use(express.static(frontendPath));
 
-  // Handle frontend routing - serve index.html for non-API routes
-  app.use('*', (req, res, next) => {
-    if (req.path.startsWith('/api')) {
-      next();
-    } else {
-      res.sendFile(join(frontendPath, 'index.html'));
+  // Define all API routes first (Nest controllers handle /api internally)
+  // After that, define a fallback route for non-API:
+  app.use((req, res, next) => {
+    if (req.originalUrl.startsWith('/api')) {
+      // Let Nest handle this as an API route
+      logger.log(`API request: ${req.method} ${req.originalUrl}`);
+      return next();
     }
+    // Else serve the frontend
+    logger.log(`Frontend request: ${req.method} ${req.originalUrl}`);
+    res.sendFile(join(frontendPath, 'index.html'));
   });
 
   const port = process.env.PORT ?? 3000;

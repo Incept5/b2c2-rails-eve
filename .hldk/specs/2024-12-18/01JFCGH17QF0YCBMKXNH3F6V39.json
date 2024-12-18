@@ -1,0 +1,24 @@
+{
+  "spec": "info: Running database migrations {\"context\":\"DatabaseService\",\"timestamp\":\"2024-12-18T09:09:15.913Z\"}\nerror: Failed to run database migrations {\"context\":\"DatabaseService\",\"timestamp\":\"2024-12-18T09:09:15.929Z\",\"trace\":\"SyntaxError: Unexpected token 'export'\\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\\n    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:322:18)\\n    at loadESMFromCJS (node:internal/modules/cjs/loader:1376:24)\\n    at Module._compile (node:internal/modules/cjs/loader:1528:5)\\n    at Object..js (node:internal/modules/cjs/loader:1698:10)\\n    at Module.load (node:internal/modules/cjs/loader:1303:32)\\n    at Function._load (node:internal/modules/cjs/loader:1117:12)\\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\\n    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\\n    at Module.require (node:internal/modules/cjs/loader:1325:12)\"}\n(node:61529) ExperimentalWarning: CommonJS module /Users/adam/dev/higherleveldev/fullstack-starter/backend/node_modules/.pnpm/knex@3.1.0_pg@8.13.1_sqlite3@5.1.7/node_modules/knex/lib/migrations/util/import-file.js is loading ES Module /Users/adam/dev/higherleveldev/fullstack-starter/backend/dist/migrations/20240318000000_create_example_table.d.ts using require().\nSupport for loading ES Module in require() is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nfile:///Users/adam/dev/higherleveldev/fullstack-starter/backend/dist/migrations/20240318000000_create_example_table.d.ts:2\nexport declare function up(knex: Knex): Promise<void>;\n^^^^^^\n\nSyntaxError: Unexpected token 'export'\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:322:18)\n    at loadESMFromCJS (node:internal/modules/cjs/loader:1376:24)\n    at Module._compile (node:internal/modules/cjs/loader:1528:5)\n    at Object..js (node:internal/modules/cjs/loader:1698:10)\n    at Module.load (node:internal/modules/cjs/loader:1303:32)\n    at Function._load (node:internal/modules/cjs/loader:1117:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n    at Module.require (node:internal/modules/cjs/loader:1325:12)\n\nNode.js v23.3.0\n ELIFECYCLE  Command failed with exit code 1.\n❌ Failed to start the application",
+  "commitMessage": "fix: Update migration file to use CommonJS exports for Knex compatibility",
+  "stats": {
+    "inputTokens": 4276,
+    "cacheWriteTokens": 6144,
+    "cacheReadTokens": 12288,
+    "outputTokens": 676,
+    "totalTokens": null,
+    "cost": 0.03727080000000001,
+    "currency": "gbp",
+    "processingMillis": 11359,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 5,
+      "deletions": 5,
+      "linesChanged": 5,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

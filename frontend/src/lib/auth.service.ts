@@ -3,6 +3,7 @@ import { env } from './env'
 interface LoginCredentials {
   email: string
   password: string
+  grant_type?: 'password'  // Optional in interface since we add it in the login method
 }
 
 interface SignupCredentials extends LoginCredentials {
@@ -23,12 +24,15 @@ export class AuthService {
   private static USER_KEY = 'auth_user'
 
   static async login(credentials: LoginCredentials): Promise<AuthResponse> {
-    const response = await fetch(`${env.VITE_API_URL}/api/auth/login`, {
+    const response = await fetch(`${env.VITE_API_URL}/api/auth/token`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(credentials),
+      body: JSON.stringify({
+        ...credentials,
+        grant_type: 'password'
+      }),
     })
 
     if (!response.ok) {

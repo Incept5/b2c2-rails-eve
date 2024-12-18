@@ -1,0 +1,24 @@
+{
+  "spec": "bug in frontend auth service - login needs to be a password grant post (see auth controller)",
+  "commitMessage": "fix: add grant_type=password to frontend auth login request",
+  "stats": {
+    "inputTokens": 11947,
+    "cacheWriteTokens": 8262,
+    "cacheReadTokens": 49572,
+    "outputTokens": 910,
+    "totalTokens": null,
+    "cost": 0.071508825,
+    "currency": "gbp",
+    "processingMillis": 169114,
+    "git": {
+      "filesChanged": 17,
+      "insertions": 20,
+      "deletions": 20,
+      "linesChanged": 20,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

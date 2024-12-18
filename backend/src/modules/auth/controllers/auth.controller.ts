@@ -4,7 +4,9 @@ import { UserService } from '../services/user.service';
 import { SignupDto } from '../dto/signup.dto';
 import { TokenDto } from '../dto/token.dto';
 import { Public } from '../decorators/public.decorator';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Authentication')
 @Controller('api/auth')
 export class AuthController {
   constructor(
@@ -14,6 +16,9 @@ export class AuthController {
 
   @Public()
   @Post('signup')
+  @ApiOperation({ summary: 'Register a new user or authenticate existing user' })
+  @ApiResponse({ status: 201, description: 'User successfully registered/authenticated' })
+  @ApiResponse({ status: 401, description: 'Email already registered with different credentials' })
   async signup(@Body() signupDto: SignupDto) {
     const existingUser = await this.userService.findByEmail(signupDto.email);
     if (existingUser) {
@@ -40,6 +45,9 @@ export class AuthController {
 
   @Public()
   @Post('token')
+  @ApiOperation({ summary: 'Authenticate user and get access token' })
+  @ApiResponse({ status: 201, description: 'Successfully authenticated' })
+  @ApiResponse({ status: 401, description: 'Invalid credentials' })
   async token(@Body() tokenDto: TokenDto) {
     try {
       const user = await this.authService.validateUser(

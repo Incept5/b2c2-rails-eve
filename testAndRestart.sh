@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stop the server first
+./stop.sh
+
 # Run tests first
 ./test.sh || { echo "❌ Tests failed"; exit 1; }
 

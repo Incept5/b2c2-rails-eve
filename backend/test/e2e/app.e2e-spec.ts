@@ -1,10 +1,10 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from '../../src/app.module';
+import { SwaggerService } from '../../src/modules/swagger/swagger.service';
 import { RestClient } from '../utils/rest-client';
-import { TestLogger } from '../utils/test-logger';
 import { ensureTestUser } from '../utils/test-auth';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { TestLogger } from '../utils/test-logger';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -19,20 +19,10 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     app.useLogger(logger);
-    
+      
     // Set up Swagger documentation
-    const config = new DocumentBuilder()
-      .setTitle('API Documentation')
-      .setDescription('The API description')
-      .setVersion('1.0')
-      .addBearerAuth()
-      .build();
-    
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api/docs', app, document, {
-      jsonDocumentUrl: '/api/docs-json',
-      yamlDocumentUrl: '/api/docs-yaml'
-    });
+    const swaggerService = app.get(SwaggerService);
+    swaggerService.setup(app);
     
     await app.init();
     client = new RestClient(app);

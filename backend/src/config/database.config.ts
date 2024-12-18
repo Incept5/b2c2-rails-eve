@@ -5,30 +5,28 @@ import * as path from 'path';
 export const databaseConfig = registerAs('database', () => {
   const env = process.env.NODE_ENV || 'dev';
   
-  const baseConfig: Knex.Config = {
-    migrations: {
-      directory: path.join(__dirname, '../migrations'),
-      extension: 'js',
-    },
-  };
-
   const configs: Record<string, Knex.Config> = {
     test: {
-      ...baseConfig,
       client: 'sqlite3',
       connection: ':memory:',
       useNullAsDefault: true,
+      migrations: {
+        directory: path.join(__dirname, '../migrations'),
+        extension: 'ts',
+      },
     },
     dev: {
-      ...baseConfig,
       client: 'sqlite3',
       connection: {
         filename: path.join(process.cwd(), '../../dev.sqlite3'),
       },
       useNullAsDefault: true,
+      migrations: {
+        directory: path.join(__dirname, '../migrations'),
+        extension: 'js',
+      },
     },
     prod: {
-      ...baseConfig,
       client: 'pg',
       connection: {
         host: 'localhost',
@@ -36,6 +34,10 @@ export const databaseConfig = registerAs('database', () => {
         user: 'postgres',
         password: 'postgres',
         database: 'postgres',
+      },
+      migrations: {
+        directory: path.join(__dirname, '../migrations'),
+        extension: 'js',
       },
     },
   };

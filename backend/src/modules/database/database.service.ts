@@ -7,28 +7,24 @@ import { LoggingService } from '../logging/logging.service';
 export class DatabaseService implements OnModuleInit {
   private knexInstance: Knex;
   private readonly context = 'DatabaseService';
+  private readonly knexConfig: Knex.Config;
 
   constructor(
     private configService: ConfigService,
     private logger: LoggingService
   ) {
-    const dbConfig = this.configService.get('database');
-    this.knexInstance = knex(dbConfig);
+    this.knexConfig = this.configService.get('database');
+    this.knexInstance = knex(this.knexConfig);
     
     this.logger.info(this.context, 'Database service initialized', {
-      client: dbConfig.client,
-      migrationsDir: dbConfig.migrations.directory,
+      config: this.knexConfig,
       environment: process.env.NODE_ENV || 'dev'
     });
   }
 
   async onModuleInit() {
     try {
-      const dbConfig = this.configService.get('database');
-      this.logger.info(this.context, 'Starting database migrations', {
-        migrationsDir: dbConfig.migrations.directory,
-        extension: dbConfig.migrations.extension
-      });
+      this.logger.info(this.context, 'Starting database migrations')
       const [batchNo, log] = await this.knexInstance.migrate.latest();
       this.logger.info(this.context, 'Database migrations completed successfully', {
         batchNumber: batchNo,

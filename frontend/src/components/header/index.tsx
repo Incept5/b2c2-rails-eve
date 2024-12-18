@@ -1,10 +1,12 @@
 import React, { ReactNode } from 'react'
 import { LanguageSelector } from '../language-selector'
-import { Button } from '../ui/button'
+import { UserMenu } from '../user-menu'
 import { useTranslation } from 'react-i18next'
+
 interface IProps {
   leftNode?: ReactNode
 }
+
 export function Header(props: IProps) {
   const { t } = useTranslation()
 
@@ -15,6 +17,7 @@ export function Header(props: IProps) {
       </a>
       <div className="flex items-center gap-4">
         <LanguageSelector />
+        <UserMenu />
       </div>
     </div>
   )

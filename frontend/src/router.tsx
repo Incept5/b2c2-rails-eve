@@ -3,11 +3,21 @@ import { createHashRouter, RouteObject } from 'react-router-dom'
 import ErrorPage from './components/error-page'
 import { getDefaultLayout } from './components/layout'
 import HomePage from './pages/home'
+import { LoginPage } from './pages/auth/login'
+import { SignupPage } from './pages/auth/signup'
 
 export const routerObjects: RouteObject[] = [
   {
     path: '/',
     Component: HomePage,
+  },
+  {
+    path: '/login',
+    Component: LoginPage,
+  },
+  {
+    path: '/signup',
+    Component: SignupPage,
   },
 ]
 

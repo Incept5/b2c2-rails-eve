@@ -1,0 +1,24 @@
+{
+  "spec": "Add to the header in the UI on the right hand side a User type icon with user options (login/signup which takes us to a login or signup page to allow the user to enter their email and password. Store the resulting JWT in local storage and if detected then the user is logged in and offer a Logout menu item instead. Wrap all this in a nice component and API handling class that can easily add the bearer token to new API calls in the future.",
+  "commitMessage": "Add user authentication UI components and functionality\n\n- Added auth service for API calls\n- Added auth context for state management\n- Created login and signup pages\n- Added user menu component to header\n- Updated router with auth routes\n- Added auth provider to app\n- Updated env configuration",
+  "stats": {
+    "inputTokens": 77460,
+    "cacheWriteTokens": 8058,
+    "cacheReadTokens": 128928,
+    "outputTokens": 5511,
+    "totalTokens": null,
+    "cost": 0.287955675,
+    "currency": "gbp",
+    "processingMillis": 151395,
+    "git": {
+      "filesChanged": 9,
+      "insertions": 356,
+      "deletions": 2,
+      "linesChanged": 356,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

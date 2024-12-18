@@ -47,7 +47,7 @@ echo "✅ Build completed successfully"
 
 # Start the backend
 echo "🚀 Starting backend..."
-pnpm run start:dev &
+pnpm run start &
 sleep 5
 
 # Check if backend started successfully

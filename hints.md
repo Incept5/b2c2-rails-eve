@@ -45,6 +45,7 @@
 - Focus on simple end-to-end (e2e) tests for happy path scenarios (no unit tests required for now)
 - Place e2e tests in `backend/test` directory
 - Do not use fixtures or mocks in e2e tests - test the real API
+- Use the rest-client.ts file to make requests to the API and use the test-auth.ts file to authenticate and get a test user
 - Example test structure:
   ```typescript
   describe('YourFeature (e2e)', () => {
@@ -66,7 +67,6 @@
   - prod: PostgreSQL (localhost:5432)
 - Migrations must be compatible with both SQLite and PostgreSQL:
   - Avoid using database-specific features
-  - Test migrations against both databases
   - Place migrations in `backend/src/migrations`
   - Use timestamp-prefixed names (YYYYMMDDHHMMSS_description.ts)
 - Database connections are automatically:
@@ -76,9 +76,10 @@
 
 ### Best Practices
 - Use TypeScript DTOs for request/response validation
+- Include Swagger documentation for all endpoints with the `@ApiTags` and `@ApiOperation` decorators and clear descriptions
 - Implement proper error handling
 - Follow existing code style and formatting
-- Document API endpoints with clear descriptions
+- Use both INFO and DEBUG logging levels as appropriate
 - Use meaningful variable and function names
 - Keep modules focused and single-responsibility
 - All entity IDs should use ULIDs (Universally Unique Lexicographically Sortable Identifiers)

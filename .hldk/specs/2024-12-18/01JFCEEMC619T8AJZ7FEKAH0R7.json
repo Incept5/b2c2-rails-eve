@@ -1,0 +1,24 @@
+{
+  "spec": "add new script to root called testAndRestart.sh which runs the test.sh script and then restarts the server (as in buildAndRestart.sh) - factor out a restart.sh script if it makes sense",
+  "commitMessage": "Added testAndRestart.sh and factored out restart.sh\n\n- Created new restart.sh script with common server restart functionality\n- Created new testAndRestart.sh that runs tests and restarts server\n- Updated buildAndRestart.sh to use the new restart.sh script\n- Made all new scripts executable",
+  "stats": {
+    "inputTokens": 6938,
+    "cacheWriteTokens": 5451,
+    "cacheReadTokens": 27255,
+    "outputTokens": 1621,
+    "totalTokens": null,
+    "cost": 0.0553100625,
+    "currency": "gbp",
+    "processingMillis": 28194,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 63,
+      "deletions": 43,
+      "linesChanged": 63,
+      "testFilesChanged": 1,
+      "testInsertions": 9,
+      "testDeletions": 0,
+      "testLinesChanged": 9
+    }
+  }
+}

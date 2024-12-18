@@ -1,0 +1,24 @@
+{
+  "spec": "update database service to log the migrations dir and config it is using",
+  "commitMessage": "Enhanced database service logging to include migration directory and configuration details",
+  "stats": {
+    "inputTokens": 7888,
+    "cacheWriteTokens": 6144,
+    "cacheReadTokens": 30720,
+    "outputTokens": 944,
+    "totalTokens": null,
+    "cost": 0.05256,
+    "currency": "gbp",
+    "processingMillis": 36283,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 20,
+      "deletions": 7,
+      "linesChanged": 20,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

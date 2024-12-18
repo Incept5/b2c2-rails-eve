@@ -45,13 +45,23 @@ export class UserRepository {
   }
 
   private mapToEntity(row: any): User {
-    return {
+    return row ? {
       id: row.id,
       email: row.email,
       name: row.name,
       passwordHash: row.password_hash,
       createdAt: row.created_at,
       updatedAt: row.updated_at
+    } : null;
+  }
+
+  private mapToRow(entity: Partial<User>): any {
+    return {
+      id: entity.id,
+      email: entity.email,
+      name: entity.name,
+      password_hash: entity.passwordHash,
+      updated_at: entity.updatedAt,
     };
   }
 }

@@ -11,17 +11,24 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, password: string): Promise<User> {
-    const user = await this.userService.findByEmail(email);
-    if (!user) {
+    try {
+      const user = await this.userService.findByEmail(email);
+      if (!user) {
+        throw new UnauthorizedException('Invalid credentials');
+      }
+
+      const isValid = await this.userService.validatePassword(user, password);
+      if (!isValid) {
+        throw new UnauthorizedException('Invalid credentials');
+      }
+
+      return user;
+    } catch (error) {
+      if (error instanceof UnauthorizedException) {
+        throw error;
+      }
       throw new UnauthorizedException('Invalid credentials');
     }
-
-    const isValid = await this.userService.validatePassword(user, password);
-    if (!isValid) {
-      throw new UnauthorizedException('Invalid credentials');
-    }
-
-    return user;
   }
 
   async createToken(user: User) {

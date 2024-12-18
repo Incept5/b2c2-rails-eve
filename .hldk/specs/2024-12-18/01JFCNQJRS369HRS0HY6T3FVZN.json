@@ -1,0 +1,24 @@
+{
+  "spec": "we need to augment the guards mechanism to introduce an @Public annotation for endpoints that are open to the public such as the signup endpoint in the auth controller",
+  "commitMessage": "Added @Public decorator and global JWT guard\n\n- Created new @Public decorator for marking public endpoints\n- Modified JwtAuthGuard to check for @Public decorator\n- Applied JwtAuthGuard globally in AppModule\n- Marked public endpoints with @Public decorator:\n  - /api/auth/signup\n  - /api/auth/token\n  - /api/monitoring/health\n  - /api/users",
+  "stats": {
+    "inputTokens": 99576,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 143044,
+    "outputTokens": 3439,
+    "totalTokens": null,
+    "cost": 0.29491965000000003,
+    "currency": "gbp",
+    "processingMillis": 96868,
+    "git": {
+      "filesChanged": 14,
+      "insertions": 282,
+      "deletions": 56,
+      "linesChanged": 282,
+      "testFilesChanged": 1,
+      "testInsertions": 41,
+      "testDeletions": 25,
+      "testLinesChanged": 41
+    }
+  }
+}

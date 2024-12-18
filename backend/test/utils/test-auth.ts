@@ -8,36 +8,52 @@ export interface TestUser {
 }
 
 export async function ensureTestUser(client: RestClient, email: string = 'test@example.com'): Promise<TestUser> {
-  // First try to find existing user
-  const existingUser = await client.get(`/api/users?email=${encodeURIComponent(email)}`);
-  
-  if (existingUser) {
-    // User exists, get auth token
-    const auth = await client.post('/api/auth/token', {
+  try {
+    // First try to find existing user
+    const users = await client.get(`/api/users?email=${encodeURIComponent(email)}`);
+
+    console.log('users found:', users);
+    
+    if (users && Array.isArray(users) && users.length > 0) {
+      const existingUser = users[0];
+      // User exists, get auth token
+      const auth = await client.post('/api/auth/token', {
+        email,
+        password: 'test1234',
+        grant_type: 'password'
+      });
+
+      if (!auth || !auth.access_token) {
+        throw new Error('Failed to get auth token');
+      }
+
+      return {
+        id: existingUser.id,
+        email: existingUser.email,
+        name: existingUser.name,
+        accessToken: auth.access_token
+      };
+    }
+
+    // Create new test user
+    const auth = await client.post('/api/auth/signup', {
       email,
-      password: 'test1234',
-      grant_type: 'password'
+      name: 'Test User',
+      password: 'test1234'
     });
 
+    if (!auth || !auth.access_token || !auth.user_id) {
+      throw new Error('Failed to create test user');
+    }
+
     return {
-      id: existingUser.id,
-      email: existingUser.email,
-      name: existingUser.name,
+      id: auth.user_id,
+      email,
+      name: 'Test User',
       accessToken: auth.access_token
     };
+  } catch (error) {
+    console.error('Error in ensureTestUser:', error);
+    throw error;
   }
-
-  // Create new test user
-  const auth = await client.post('/api/auth/signup', {
-    email,
-    name: 'Test User',
-    password: 'test1234'
-  });
-
-  return {
-    id: auth.user_id,
-    email,
-    name: 'Test User',
-    accessToken: auth.access_token
-  };
 }

@@ -18,13 +18,8 @@ stop_backend() {
         sleep 3
         if check_backend; then
             echo "❌ Failed to stop backend process"
-            # Fallback to force kill if graceful shutdown fails
-            pkill -f "node.*dist/main"
-            sleep 2
-            if check_backend; then
-                echo "❌ Failed to stop backend process even with force kill"
-                exit 1
-            fi
+            echo "Please check if the application is still running and stop it manually"
+            exit 1
         else
             echo "✅ Backend process stopped successfully"
         fi

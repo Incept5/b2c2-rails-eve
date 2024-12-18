@@ -1,0 +1,24 @@
+{
+  "spec": "remove the pkill because it will kill other node processes that might be running",
+  "commitMessage": "Remove pkill fallback from buildAndRestart.sh to avoid affecting other Node processes",
+  "stats": {
+    "inputTokens": 11089,
+    "cacheWriteTokens": 4873,
+    "cacheReadTokens": 4873,
+    "outputTokens": 659,
+    "totalTokens": null,
+    "cost": 0.0471657375,
+    "currency": "gbp",
+    "processingMillis": 10556,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 2,
+      "deletions": 7,
+      "linesChanged": 7,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

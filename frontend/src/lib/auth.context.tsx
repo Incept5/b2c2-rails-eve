@@ -12,12 +12,21 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(AuthService.isAuthenticated())
-  const [user, setUser] = useState(AuthService.getUser())
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
-    setIsAuthenticated(AuthService.isAuthenticated())
-    setUser(AuthService.getUser())
+    // Initialize auth state
+    const initAuth = () => {
+      const isAuth = AuthService.isAuthenticated()
+      setIsAuthenticated(isAuth)
+      if (isAuth) {
+        const userData = AuthService.getUser()
+        setUser(userData)
+      }
+    }
+    
+    initAuth()
   }, [])
 
   const login = async (email: string, password: string) => {

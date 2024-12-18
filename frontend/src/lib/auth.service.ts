@@ -70,7 +70,13 @@ export class AuthService {
 
   static getUser(): any | null {
     const user = localStorage.getItem(AuthService.USER_KEY)
-    return user ? JSON.parse(user) : null
+    if (!user) return null
+    try {
+      return JSON.parse(user)
+    } catch (error) {
+      console.error('Failed to parse user data from localStorage:', error)
+      return null
+    }
   }
 
   static setUser(user: any): void {

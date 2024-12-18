@@ -1,0 +1,24 @@
+{
+  "spec": "update the restart script to use the stop script",
+  "commitMessage": "refactor: update restart.sh to use stop.sh script\n\n- Removed duplicate stop functionality from restart.sh\n- Now sources and uses the more robust implementation from stop.sh\n- Includes both graceful and force stop capabilities",
+  "stats": {
+    "inputTokens": 3863,
+    "cacheWriteTokens": 5472,
+    "cacheReadTokens": 16416,
+    "outputTokens": 795,
+    "totalTokens": null,
+    "cost": 0.036719100000000005,
+    "currency": "gbp",
+    "processingMillis": 14728,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 11,
+      "deletions": 29,
+      "linesChanged": 29,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

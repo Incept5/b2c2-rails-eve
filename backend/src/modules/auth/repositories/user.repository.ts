@@ -8,7 +8,7 @@ export class UserRepository {
 
   async create(user: Partial<User>): Promise<User> {
     const [created] = await this.db.knex('users')
-      .insert(user)
+      .insert(this.mapToRow(user))
       .returning('*');
     return this.mapToEntity(created);
   }
@@ -61,6 +61,7 @@ export class UserRepository {
       email: entity.email,
       name: entity.name,
       password_hash: entity.passwordHash,
+      created_at: entity.createdAt,
       updated_at: entity.updatedAt,
     };
   }

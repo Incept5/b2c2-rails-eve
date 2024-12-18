@@ -15,12 +15,18 @@ export class AuthController {
   @Public()
   @Post('signup')
   async signup(@Body() signupDto: SignupDto) {
-    try {
-      const existingUser = await this.userService.findByEmail(signupDto.email);
-      if (existingUser) {
+    const existingUser = await this.userService.findByEmail(signupDto.email);
+    if (existingUser) {
+      // If user exists, try to authenticate them
+      try {
+        await this.authService.validateUser(signupDto.email, signupDto.password);
+        return this.authService.createToken(existingUser);
+      } catch (error) {
         throw new UnauthorizedException('Email already registered');
       }
+    }
 
+    try {
       const user = await this.userService.create(
         signupDto.email,
         signupDto.name,
@@ -28,9 +34,6 @@ export class AuthController {
       );
       return this.authService.createToken(user);
     } catch (error) {
-      if (error instanceof UnauthorizedException) {
-        throw error;
-      }
       throw new UnauthorizedException('Failed to create user');
     }
   }

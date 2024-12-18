@@ -1,24 +1,24 @@
 {
   "spec": "we need to augment the guards mechanism to introduce an @Public annotation for endpoints that are open to the public such as the signup endpoint in the auth controller",
-  "commitMessage": "Added @Public decorator and global JWT guard\n\n- Created new @Public decorator for marking public endpoints\n- Modified JwtAuthGuard to check for @Public decorator\n- Applied JwtAuthGuard globally in AppModule\n- Marked public endpoints with @Public decorator:\n  - /api/auth/signup\n  - /api/auth/token\n  - /api/monitoring/health\n  - /api/users",
+  "commitMessage": "Fixed user creation and authentication issues\n\n- Fixed user repository to properly map between entity and row formats\n- Improved signup endpoint to handle existing users better\n- Added created_at to row mapping in user repository",
   "stats": {
-    "inputTokens": 99576,
+    "inputTokens": 253281,
     "cacheWriteTokens": 0,
-    "cacheReadTokens": 143044,
-    "outputTokens": 3439,
+    "cacheReadTokens": 221068,
+    "outputTokens": 5222,
     "totalTokens": null,
-    "cost": 0.29491965000000003,
+    "cost": 0.6783700500000001,
     "currency": "gbp",
-    "processingMillis": 96868,
+    "processingMillis": 247508,
     "git": {
-      "filesChanged": 14,
-      "insertions": 282,
-      "deletions": 56,
-      "linesChanged": 282,
-      "testFilesChanged": 1,
-      "testInsertions": 41,
-      "testDeletions": 25,
-      "testLinesChanged": 41
+      "filesChanged": 4,
+      "insertions": 12,
+      "deletions": 8,
+      "linesChanged": 12,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
     }
   }
 }

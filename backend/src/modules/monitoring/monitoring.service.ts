@@ -17,13 +17,4 @@ export class MonitoringService {
     this.logger.log('Health check response', health);
     return health;
   }
-
-  shutdown() {
-    this.logger.log('Application shutdown requested');
-    setTimeout(() => {
-      this.logger.log('Executing application shutdown');
-      process.exit(0);
-    }, 100);
-    return { message: 'Application shutdown initiated' };
-  }
 }

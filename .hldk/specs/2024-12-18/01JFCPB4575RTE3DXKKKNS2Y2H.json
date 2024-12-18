@@ -1,0 +1,24 @@
+{
+  "spec": "remove the shutdown endpoint from monitoring controller and update the stop script accordingly to rely on the forceful stop mechanism",
+  "commitMessage": "Remove shutdown endpoint and simplify stop script to use force stop only\n\n- Removed shutdown endpoint from MonitoringController\n- Removed shutdown method from MonitoringService\n- Simplified stop.sh to use force stop mechanism only\n- Removed graceful shutdown attempt since it's no longer needed",
+  "stats": {
+    "inputTokens": 15585,
+    "cacheWriteTokens": 6530,
+    "cacheReadTokens": 45710,
+    "outputTokens": 2167,
+    "totalTokens": null,
+    "cost": 0.088095375,
+    "currency": "gbp",
+    "processingMillis": 45519,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 4,
+      "deletions": 52,
+      "linesChanged": 52,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

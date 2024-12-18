@@ -40,6 +40,9 @@ export class AuthService {
     }
 
     const data = await response.json()
+    // Store the token and user data immediately
+    this.setToken(data.token)
+    this.setUser(data.user)
     return data
   }
 
@@ -57,6 +60,9 @@ export class AuthService {
     }
 
     const data = await response.json()
+    // Store the token and user data immediately
+    this.setToken(data.token)
+    this.setUser(data.user)
     return data
   }
 

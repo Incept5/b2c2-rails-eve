@@ -1,0 +1,24 @@
+{
+  "spec": "when logged in we are not seeing the user menu at all",
+  "commitMessage": "Fixed auth service to properly store user data in localStorage after login/signup",
+  "stats": {
+    "inputTokens": 31252,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 81729,
+    "outputTokens": 1699,
+    "totalTokens": null,
+    "cost": 0.107819775,
+    "currency": "gbp",
+    "processingMillis": 52993,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 6,
+      "deletions": 4,
+      "linesChanged": 6,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

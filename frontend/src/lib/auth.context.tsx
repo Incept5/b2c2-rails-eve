@@ -38,16 +38,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string) => {
     const response = await AuthService.login({ email, password })
-    AuthService.setToken(response.token)
-    AuthService.setUser(response.user)
     setIsAuthenticated(true)
     setUser(response.user)
   }
 
   const signup = async (name: string, email: string, password: string) => {
     const response = await AuthService.signup({ name, email, password })
-    AuthService.setToken(response.token)
-    AuthService.setUser(response.user)
     setIsAuthenticated(true)
     setUser(response.user)
   }

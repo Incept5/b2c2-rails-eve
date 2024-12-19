@@ -1,0 +1,24 @@
+{
+  "spec": "what is this repo?",
+  "commitMessage": "Update header title to use translation.",
+  "stats": {
+    "inputTokens": null,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 0,
+    "outputTokens": null,
+    "totalTokens": 7780,
+    "cost": 0,
+    "currency": "gbp",
+    "processingMillis": 7150,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 1,
+      "deletions": 1,
+      "linesChanged": 1,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

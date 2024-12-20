@@ -2,7 +2,7 @@
 
 # Stop the containers
 echo "Stopping Docker containers..."
-docker-compose -f docker/docker-compose.yml down
+docker compose -f docker/docker-compose.yml down
 
 # Run the tests
 echo "Running tests..."
@@ -17,7 +17,7 @@ fi
 echo "Tests passed successfully. Restarting containers..."
 
 # Start the containers in detached mode
-docker-compose -f docker/docker-compose.yml up -d --build
+docker compose -f docker/docker-compose.yml up -d --build
 
 # Wait for containers to be healthy
 echo "Waiting for containers to be healthy..."
@@ -26,14 +26,14 @@ ELAPSED=0
 INTERVAL=10  # Check every 10 seconds
 
 while [ $ELAPSED -lt $TIMEOUT ]; do
-    if docker-compose -f docker/docker-compose.yml ps | grep -q "healthy"; then
+    if docker compose -f docker/docker-compose.yml ps | grep -q "healthy"; then
         echo "Containers are healthy!"
         exit 0
     fi
     
-    if docker-compose -f docker/docker-compose.yml ps | grep -q "unhealthy\|exit"; then
+    if docker compose -f docker/docker-compose.yml ps | grep -q "unhealthy\|exit"; then
         echo "Container health check failed! Container logs:"
-        docker-compose -f docker/docker-compose.yml logs
+        docker compose -f docker/docker-compose.yml logs
         echo "Error: Containers failed to start properly."
         exit 1
     fi
@@ -44,6 +44,6 @@ while [ $ELAPSED -lt $TIMEOUT ]; do
 done
 
 echo "Timeout waiting for containers to be healthy! Container logs:"
-docker-compose -f docker/docker-compose.yml logs
+docker compose -f docker/docker-compose.yml logs
 echo "Error: Containers failed to start within timeout period."
 exit 1

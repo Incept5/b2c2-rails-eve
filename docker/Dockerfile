@@ -18,8 +18,9 @@ RUN pnpm build
 FROM node:20-alpine
 WORKDIR /app
 
-# Install SQLite
-RUN apk add --no-cache sqlite
+# Install SQLite and pnpm
+RUN apk add --no-cache sqlite && \
+    npm install -g pnpm
 
 # Copy frontend build
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist

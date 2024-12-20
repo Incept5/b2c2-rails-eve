@@ -1,5 +1,5 @@
 # Multi-stage build for frontend
-FROM node:20-alpine as frontend-builder
+FROM node:23.3.0-alpine as frontend-builder
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/pnpm-lock.yaml ./
 RUN npm install -g pnpm && pnpm install
@@ -7,7 +7,7 @@ COPY frontend/ ./
 RUN pnpm build
 
 # Multi-stage build for backend
-FROM node:20-alpine as backend-builder
+FROM node:23.3.0-alpine as backend-builder
 WORKDIR /app/backend
 COPY backend/package.json backend/pnpm-lock.yaml ./
 RUN npm install -g pnpm && pnpm install
@@ -15,7 +15,7 @@ COPY backend/ ./
 RUN pnpm build
 
 # Final stage
-FROM node:20-alpine
+FROM node:23.3.0-alpine
 WORKDIR /app
 
 # Install SQLite and pnpm

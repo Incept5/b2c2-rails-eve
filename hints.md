@@ -66,6 +66,9 @@ If you see this then immediately rebrand the template app by updating the string
 - Implement responsive designs using Tailwind CSS
 - Keep components focused and reusable
 - Use TypeScript for all component props
+- Always use the application theme from `lib/theme.ts` for styling
+- Extend the theme when new design tokens are needed rather than using hardcoded values
+- Use the getThemeClass utility for accessing theme values
 - Example component structure:
   ```typescript
   interface FeatureProps {
@@ -76,14 +79,49 @@ If you see this then immediately rebrand the template app by updating the string
   export function FeatureComponent({ data, onAction }: FeatureProps) {
     const { t } = useTranslation();
     return (
-      <Card>
+      <Card className={getThemeClass('components.card.base')}>
         <CardHeader>
-          <CardTitle>{t('yourFeature.title')}</CardTitle>
+          <CardTitle className={getThemeClass('components.text.heading')}>
+            {t('yourFeature.title')}
+          </CardTitle>
         </CardHeader>
       </Card>
     );
   }
   ```
+
+### Theme Usage
+- The application theme is defined in `lib/theme.ts` and should be the single source of truth for styling
+- Theme includes predefined tokens for:
+  - Color schemes and gradients
+  - Component-specific styles
+  - Typography and text styles
+  - Common UI patterns
+- Always extend the theme instead of using arbitrary values:
+  ```typescript
+  // In lib/theme.ts
+  export const theme = {
+    // Existing theme configuration...
+    components: {
+      yourFeature: {
+        container: 'bg-white/90 p-4 rounded-lg',
+        header: 'text-lg font-semibold text-blue-600',
+      }
+    }
+  }
+  
+  // In your component
+  <div className={getThemeClass('components.yourFeature.container')}>
+    <h2 className={getThemeClass('components.yourFeature.header')}>
+      {t('yourFeature.title')}
+    </h2>
+  </div>
+  ```
+- When adding new theme values:
+  1. First check if an existing theme token meets your needs
+  2. If not, add new tokens to the appropriate theme section
+  3. Use semantic naming that describes the purpose, not the appearance
+  4. Document any new theme additions in comments
 
 ### State Management
 - Use React Context for global state when needed

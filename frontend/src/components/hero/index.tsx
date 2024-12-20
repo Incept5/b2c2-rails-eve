@@ -16,31 +16,6 @@ export const Hero = () => {
                 <h1 className="mb-6 text-3xl font-bold tracking-tighter text-transparent text-white sm:text-5xl xl:text-6xl/none">
                   {t('hero-title')}
                 </h1>
-                <Button className="font-semiboldn gap-3 py-6 text-lg" size={'lg'} asChild>
-                  <a href="https://github.com/higherleveldev/frontend-starter">
-                    <Zap />
-                    {t('get-started')}
-                  </a>
-                </Button>
-              </div>
-              <div className="mx-auto w-full max-w-full space-y-4">
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                  <div className="flex flex-col items-center space-y-2 rounded-lg p-4">
-                    <div className="rounded-full bg-black p-4 text-white">
-                      <Rocket size={32} />
-                    </div>
-                    <h2 className="text-2xl font-bold text-white">{t('modernstack')}</h2>
-                    <p className="text-white">{t('modernstack-desc')}</p>
-                  </div>
-                  <div className="flex flex-col items-center space-y-2 rounded-lg p-4">
-                    <div className="rounded-full bg-black p-4 text-white">
-                      <Globe2 size={32} />
-                    </div>
-                    <h2 className="text-2xl font-bold text-white">{t('i18nsupport')}</h2>
-                    <p className="text-white">{t('i18nsupport-desc')}</p>
-                  </div>
-
-                </div>
               </div>
             </div>
           </div>

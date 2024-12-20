@@ -1,0 +1,24 @@
+{
+  "spec": "add a docker folder with a Dockerfile in and a docker-compose.yml which will allow anyone to run the project easily...\nalso add a testAndRestartDocker.sh script to the root which will stop the docker containers then run the tests then if they pass restart the docker containers... and also check that the containers started and if they didn't then output the container logs to the console and report an error... if everything starts okay then report success",
+  "commitMessage": "Added Docker support with Dockerfile, docker-compose.yml and testAndRestartDocker.sh script\n\n- Added docker/Dockerfile with multi-stage build for frontend and backend\n- Added docker/docker-compose.yml for easy container orchestration\n- Added testAndRestartDocker.sh script for testing and container management\n- Added health checks and proper container logging",
+  "stats": {
+    "inputTokens": 5473,
+    "cacheWriteTokens": 9639,
+    "cacheReadTokens": 38556,
+    "outputTokens": 1525,
+    "totalTokens": null,
+    "cost": 0.06525528750000001,
+    "currency": "gbp",
+    "processingMillis": 23892,
+    "git": {
+      "filesChanged": 4,
+      "insertions": 119,
+      "deletions": 2,
+      "linesChanged": 119,
+      "testFilesChanged": 1,
+      "testInsertions": 49,
+      "testDeletions": 0,
+      "testLinesChanged": 49
+    }
+  }
+}

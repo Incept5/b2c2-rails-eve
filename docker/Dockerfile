@@ -37,4 +37,4 @@ RUN chmod +x /app/*.sh
 
 EXPOSE 3000 5173
 
-CMD ["sh", "/app/start.sh"]
+CMD ["sh", "/app/startProd.sh"]

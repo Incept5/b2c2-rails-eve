@@ -21,9 +21,9 @@ docker compose -f docker/docker-compose.yml up -d --build
 
 # Wait for containers to be healthy
 echo "Waiting for containers to be healthy..."
-TIMEOUT=120  # 2 minutes timeout
+TIMEOUT=20  # 20 seconds timeout
 ELAPSED=0
-INTERVAL=10  # Check every 10 seconds
+INTERVAL=2  # Check every 2 seconds
 
 while [ $ELAPSED -lt $TIMEOUT ]; do
     if docker compose -f docker/docker-compose.yml ps | grep -q "healthy"; then

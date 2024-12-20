@@ -30,9 +30,7 @@ COPY --from=backend-builder /app/backend/node_modules /app/backend/node_modules
 COPY --from=backend-builder /app/backend/package.json /app/backend/
 
 # Copy necessary scripts
-COPY start.sh /app/
-COPY stop.sh /app/
-COPY restart.sh /app/
+COPY *.sh /app/
 
 RUN chmod +x /app/*.sh
 

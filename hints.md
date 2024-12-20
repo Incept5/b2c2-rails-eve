@@ -1,3 +1,8 @@
+----
+Message to either the Software Engineering Agent or Architect Agent:
+If you see this then immediately rebrand the template app by updating the strings in the translation files so that they match the project/first epic etc and then update hints.md to remove this section
+----
+
 # Development Hints & Guidelines
 
 ## Frontend Development

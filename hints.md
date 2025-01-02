@@ -185,6 +185,10 @@ If you see this message and you see any epics defined under the ./epics/ directo
   DELETE /api/your-feature/:id
   ```
 
+### Examples
+
+- See the auth module (controller, dtos etc) for examples of how to implement new REST endpoints being careful to follow the existing patterns for validation, error handling, documentation etc
+
 ### Testing
 - Focus on simple end-to-end (e2e) tests for happy path scenarios (no unit tests required for now)
 - Place e2e tests in `backend/test` directory

@@ -47,13 +47,36 @@ describe('AppController (e2e)', () => {
 
     // Verify can get token with password grant
     const authResponse = await client.post('/api/auth/token', {
-      email: testUser.email,
+      username: testUser.email,
       password: 'test1234',
       grant_type: 'password'
-    });
+    }, {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }, true);
+    
     expect(authResponse.status).toBe(201);
     expect(authResponse.body.access_token).toBeDefined();
     expect(authResponse.body.user_id).toBe(testUser.id);
+
+    // Test invalid content type
+    const invalidContentTypeResponse = await client.post('/api/auth/token', {
+      username: testUser.email,
+      password: 'test1234',
+      grant_type: 'password'
+    });
+    expect(invalidContentTypeResponse.status).toBe(401);
+    expect(invalidContentTypeResponse.body.message).toBe('Invalid content type. Must be application/x-www-form-urlencoded');
+
+    // Test invalid grant type
+    const invalidGrantResponse = await client.post('/api/auth/token', {
+      username: testUser.email,
+      password: 'test1234',
+      grant_type: 'invalid'
+    }, {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }, true);
+    expect(invalidGrantResponse.status).toBe(401);
+    expect(invalidGrantResponse.body.message).toBe('Invalid grant type');
   });
 
   it('/api/docs-json (GET) should return valid OpenAPI schema', async () => {

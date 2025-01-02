@@ -1,10 +1,10 @@
-import { Body, Controller, Post, UnauthorizedException, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Post, UnauthorizedException, ValidationPipe, Headers } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { SignupDto } from '../dto/signup.dto';
 import { TokenDto } from '../dto/token.dto';
 import { Public } from '../decorators/public.decorator';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags, ApiConsumes } from '@nestjs/swagger';
 
 @ApiTags('Authentication')
 @Controller('api/auth')
@@ -46,13 +46,41 @@ export class AuthController {
 
   @Public()
   @Post('token')
-  @ApiOperation({ summary: 'Authenticate user and get access token' })
-  @ApiResponse({ status: 201, description: 'Successfully authenticated' })
+  @ApiConsumes('application/x-www-form-urlencoded')
+  @ApiOperation({
+    summary: 'Authenticate user and get access token',
+    description: 'OAuth2 password grant token endpoint. Requires application/x-www-form-urlencoded content-type.'
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'Successfully authenticated',
+    schema: {
+      example: {
+        access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        user_id: '01HQ6V7V6P4M6RJRH0YV3G8E4H',
+        expires: '2024-03-26T00:00:00.000Z'
+      }
+    }
+  })
   @ApiResponse({ status: 401, description: 'Invalid credentials' })
-  async token(@Body() tokenDto: TokenDto) {
+  @ApiResponse({ status: 400, description: 'Invalid request format or missing required fields' })
+  async token(
+    @Headers('content-type') contentType: string,
+    @Body(new ValidationPipe({
+      transform: true,
+    })) tokenDto: TokenDto
+  ) {
+    if (!contentType?.toLowerCase().includes('application/x-www-form-urlencoded')) {
+      throw new UnauthorizedException('Invalid content type. Must be application/x-www-form-urlencoded');
+    }
+
+    if (tokenDto.grant_type !== 'password') {
+      throw new UnauthorizedException('Invalid grant type');
+    }
+
     try {
       const user = await this.authService.validateUser(
-        tokenDto.email,
+        tokenDto.username,
         tokenDto.password
       );
       return this.authService.createToken(user);

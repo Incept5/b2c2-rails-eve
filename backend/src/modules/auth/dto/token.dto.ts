@@ -3,15 +3,21 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class TokenDto {
   @ApiProperty({
-    description: 'User email address',
-    example: 'user@example.com'
+    description: 'Username (email address)',
+    example: 'user@example.com',
+    type: 'string',
+    format: 'email',
+    required: true
   })
   @IsEmail()
-  email: string;
+  username: string;
 
   @ApiProperty({
     description: 'User password',
-    example: 'password123'
+    example: 'password123',
+    type: 'string',
+    minLength: 8,
+    required: true
   })
   @IsString()
   @MinLength(8)
@@ -20,7 +26,9 @@ export class TokenDto {
   @ApiProperty({
     description: 'OAuth2 grant type',
     example: 'password',
-    enum: ['password']
+    enum: ['password'],
+    type: 'string',
+    required: true
   })
   @IsString()
   grant_type: 'password';

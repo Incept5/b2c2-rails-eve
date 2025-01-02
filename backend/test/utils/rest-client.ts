@@ -56,10 +56,15 @@ export class RestClient {
     return response;
   }
 
-  async post(url: string, body?: any, headers?: Record<string, string>) {
+  async post(url: string, body?: any, headers?: Record<string, string>, isFormUrlEncoded: boolean = false) {
     this.logRequest('POST', url, headers, body);
     const req = request(this.app.getHttpServer()).post(url);
     this.setHeaders(req, headers);
+    
+    if (isFormUrlEncoded) {
+      req.type('form');
+    }
+    
     const response = await req.send(body);
     this.logResponse(response);
     return response;

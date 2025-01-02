@@ -20,10 +20,12 @@ export async function ensureTestUser(client: RestClient, email: string = 'test@e
       const existingUser = users[0];
       // User exists, get auth token
       const authResponse = await client.post('/api/auth/token', {
-        email,
+        username: email,
         password: 'test1234',
         grant_type: 'password'
-      });
+      }, {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }, true);
 
       const auth = authResponse.body;
       if (!auth || !auth.access_token) {

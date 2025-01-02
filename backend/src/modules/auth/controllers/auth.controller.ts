@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, Post, UnauthorizedException, ValidationPipe } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { SignupDto } from '../dto/signup.dto';
@@ -19,7 +19,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Register a new user or authenticate existing user' })
   @ApiResponse({ status: 201, description: 'User successfully registered/authenticated' })
   @ApiResponse({ status: 401, description: 'Email already registered with different credentials' })
-  async signup(@Body() signupDto: SignupDto) {
+  async signup(@Body(new ValidationPipe()) signupDto: SignupDto) {
     const existingUser = await this.userService.findByEmail(signupDto.email);
     if (existingUser) {
       // If user exists, try to authenticate them
@@ -34,7 +34,8 @@ export class AuthController {
     try {
       const user = await this.userService.create(
         signupDto.email,
-        signupDto.name,
+        signupDto.firstName,
+        signupDto.lastName,
         signupDto.password
       );
       return this.authService.createToken(user);

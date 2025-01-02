@@ -8,12 +8,13 @@ import { ulid } from 'ulid';
 export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async create(email: string, name: string, password: string): Promise<User> {
+  async create(email: string, firstName: string, lastName: string, password: string): Promise<User> {
     const passwordHash = await bcrypt.hash(password, 10);
     return this.userRepository.create({
       id: ulid(),
       email,
-      name,
+      firstName,
+      lastName,
       passwordHash
     });
   }

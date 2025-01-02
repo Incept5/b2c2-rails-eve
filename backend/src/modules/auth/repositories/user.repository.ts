@@ -48,7 +48,8 @@ export class UserRepository {
     return row ? {
       id: row.id,
       email: row.email,
-      name: row.name,
+      firstName: row.first_name,
+      lastName: row.last_name,
       passwordHash: row.password_hash,
       createdAt: row.created_at,
       updatedAt: row.updated_at
@@ -59,7 +60,8 @@ export class UserRepository {
     return {
       id: entity.id,
       email: entity.email,
-      name: entity.name,
+      first_name: entity.firstName,
+      last_name: entity.lastName,
       password_hash: entity.passwordHash,
       created_at: entity.createdAt,
       updated_at: entity.updatedAt,

@@ -5,6 +5,7 @@ import { SwaggerService } from '../../src/modules/swagger/swagger.service';
 import { RestClient } from '../utils/rest-client';
 import { ensureTestUser } from '../utils/test-auth';
 import { TestLogger } from '../utils/test-logger';
+import { describe, it, expect, beforeEach, afterEach } from '@jest/globals';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -76,5 +77,128 @@ describe('AppController (e2e)', () => {
     // Verify we have some documented endpoints
     expect(Object.keys(schema.paths)).toContain('/api/monitoring/health');
     expect(Object.keys(schema.paths)).toContain('/api/auth/token');
+  });
+
+  it('should return 400 when signing up with invalid data', async () => {
+    const invalidSignupTests = [
+      {
+        payload: {
+          // Missing email
+          password: 'test1234',
+          firstName: 'Test',
+          lastName: 'User'
+        },
+        expectedError: 'email should not be empty'
+      },
+      {
+        payload: {
+          email: 'invalid-email',  // Invalid email format
+          password: 'test1234',
+          firstName: 'Test',
+          lastName: 'User'
+        },
+        expectedError: 'email must be an email'
+      },
+      {
+        payload: {
+          email: 'test@example.com',
+          password: '123', // Too short password
+          firstName: 'Test',
+          lastName: 'User'
+        },
+        expectedError: 'password is too short'
+      },
+      {
+        payload: {
+          email: 'test@example.com',
+          password: 'test1234',
+          // Missing firstName
+          lastName: 'User'
+        },
+        expectedError: 'firstName should not be empty'
+      }
+    ];
+
+    for (const test of invalidSignupTests) {
+      const response = await client.post('/api/auth/signup', test.payload);
+      expect(response.status).toBe(400);
+      expect(response.body.message).toContain(test.expectedError);
+    }
+  });
+
+  it('should validate signup data and return 400 for invalid inputs', async () => {
+    const testCases = [
+      {
+        payload: {
+          email: 'not-an-email',
+          password: 'validpass123',
+          firstName: 'Test',
+          lastName: 'User'
+        },
+        expectedError: 'email must be an email'
+      },
+      {
+        payload: {
+          email: 'test@example.com',
+          password: 'short',  // Less than 8 characters
+          firstName: 'Test',
+          lastName: 'User'
+        },
+        expectedError: 'password is too short'
+      },
+      {
+        payload: {
+          email: 'test@example.com',
+          password: 'validpass123',
+          firstName: '',  // Empty firstName
+          lastName: 'User'
+        },
+        expectedError: 'firstName should not be empty'
+      },
+      {
+        payload: {
+          email: 'test@example.com',
+          password: 'validpass123',
+          firstName: 'Test',
+          lastName: ''  // Empty lastName
+        },
+        expectedError: 'lastName should not be empty'
+      },
+      {
+        payload: {
+          // Missing email field
+          password: 'validpass123',
+          firstName: 'Test',
+          lastName: 'User'
+        },
+        expectedError: 'email should not be empty'
+      },
+      {
+        payload: {
+          email: 'test@example.com',
+          // Missing password field
+          firstName: 'Test',
+          lastName: 'User'
+        },
+        expectedError: 'password should not be empty'
+      }
+    ];
+
+    for (const testCase of testCases) {
+      const response = await client.post('/api/auth/signup', testCase.payload);
+      expect(response.status).toBe(400);
+      expect(response.body.message).toContain(testCase.expectedError);
+      expect(response.body.error).toBe('Bad Request');
+    }
+
+    // Verify empty payload
+    const emptyResponse = await client.post('/api/auth/signup', {});
+    expect(emptyResponse.status).toBe(400);
+    expect(emptyResponse.body.message).toEqual(expect.arrayContaining([
+      'email should not be empty',
+      'password should not be empty',
+      'firstName should not be empty',
+      'lastName should not be empty'
+    ]));
   });
 });

@@ -18,7 +18,8 @@ export class UsersController {
     return users.map(user => ({
       id: user.id,
       email: user.email,
-      name: user.name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt
     }));

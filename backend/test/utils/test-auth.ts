@@ -3,7 +3,8 @@ import { RestClient } from './rest-client';
 export interface TestUser {
   id: string;
   email: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   accessToken: string;
 }
 
@@ -33,7 +34,8 @@ export async function ensureTestUser(client: RestClient, email: string = 'test@e
       return {
         id: existingUser.id,
         email: existingUser.email,
-        name: existingUser.name,
+        firstName: existingUser.firstName,
+        lastName: existingUser.lastName,
         accessToken: auth.access_token
       };
     }
@@ -41,7 +43,8 @@ export async function ensureTestUser(client: RestClient, email: string = 'test@e
     // Create new test user
     const authResponse = await client.post('/api/auth/signup', {
       email,
-      name: 'Test User',
+      firstName: 'Test',
+      lastName: 'User',
       password: 'test1234'
     });
 
@@ -54,11 +57,12 @@ export async function ensureTestUser(client: RestClient, email: string = 'test@e
     return {
       id: auth.user_id,
       email,
-      name: 'Test User',
+      firstName: 'Test',
+      lastName: 'User',
       accessToken: auth.access_token
     };
   } catch (error) {
     console.error('Error in ensureTestUser:', error);
     throw error;
   }
-}
+} 

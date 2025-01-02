@@ -8,6 +8,7 @@ import { SwaggerService } from './modules/swagger/swagger.service';
 import { RequestLoggerInterceptor } from './modules/logging/request-logger.interceptor';
 import { GlobalValidationPipe } from './modules/validation/validation.pipe';
 import { GlobalExceptionFilter } from './modules/error/http-exception.filter';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -54,6 +55,8 @@ async function bootstrap() {
     logger.log(`Frontend request: ${req.method} ${req.originalUrl}`, 'Router', { url: req.originalUrl, method: req.method });
     res.sendFile(join(frontendPath, 'index.html'));
   });
+
+  app.useGlobalPipes(new ValidationPipe());
 
   const port = process.env.PORT ?? 3000;
   await app.listen(port);

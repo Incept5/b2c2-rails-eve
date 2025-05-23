@@ -5,13 +5,15 @@ import { MonitoringModule } from './modules/monitoring/monitoring.module';
 import { DatabaseModule } from './modules/database/database.module';
 import { LoggingModule } from './modules/logging/logging.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
+import { ConditionalAuthGuard } from './modules/auth/guards/conditional-auth.guard';
 import { SwaggerModule } from './modules/swagger/swagger.module';
+import { authConfig } from './config/auth.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      load: [authConfig],
     }),
     LoggingModule,
     DatabaseModule,
@@ -22,7 +24,7 @@ import { SwaggerModule } from './modules/swagger/swagger.module';
   providers: [
     {
       provide: APP_GUARD,
-      useClass: JwtAuthGuard,
+      useClass: ConditionalAuthGuard,
     },
   ],
 })

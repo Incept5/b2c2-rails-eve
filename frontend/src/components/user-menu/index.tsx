@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../lib/auth.context'
+import { useAuth } from '../../lib/use-auth'
+import { isAuthEnabled } from '../../lib/auth-config'
 import { Button } from '../ui/button'
 import {
   DropdownMenu,
@@ -13,6 +14,11 @@ import { Avatar, AvatarFallback } from '../ui/avatar'
 export function UserMenu() {
   const { isAuthenticated, user, logout } = useAuth()
   const navigate = useNavigate()
+
+  // If auth is disabled, don't show any auth UI
+  if (!isAuthEnabled()) {
+    return null
+  }
 
   if (!isAuthenticated) {
     return (

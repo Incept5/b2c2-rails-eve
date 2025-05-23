@@ -1,13 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { AuthService } from './auth.service'
-
-interface AuthContextType {
-  isAuthenticated: boolean
-  user: any | null
-  login: (email: string, password: string) => Promise<void>
-  signup: (name: string, email: string, password: string) => Promise<void>
-  logout: () => void
-}
+import { AuthContextType } from './auth.types'
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 

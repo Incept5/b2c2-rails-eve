@@ -28,11 +28,6 @@ logs/
 *.sqlite3
 *.db
 
-# Environment variables
-.env
-.env.*
-!.env.example
-
 # Testing
 coverage/
 .nyc_output/
@@ -59,6 +54,12 @@ __pycache__/
 *.key
 *.cert
 *.p12
+
+# Environment files (local overrides only)
+.env.local
+.env.*.local
+backend/.env.local
+frontend/.env.local
 
 # Project specific
 .turbo/

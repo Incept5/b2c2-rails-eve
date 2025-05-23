@@ -5,12 +5,16 @@ import { getDefaultLayout } from './components/layout'
 import HomePage from './pages/home'
 import { LoginPage } from './pages/auth/login'
 import { SignupPage } from './pages/auth/signup'
+import { isAuthEnabled } from './lib/auth-config'
 
-export const routerObjects: RouteObject[] = [
+const baseRoutes: RouteObject[] = [
   {
     path: '/',
     Component: HomePage,
   },
+]
+
+const authRoutes: RouteObject[] = [
   {
     path: '/login',
     Component: LoginPage,
@@ -19,6 +23,11 @@ export const routerObjects: RouteObject[] = [
     path: '/signup',
     Component: SignupPage,
   },
+]
+
+export const routerObjects: RouteObject[] = [
+  ...baseRoutes,
+  ...(isAuthEnabled() ? authRoutes : []),
 ]
 
 export function createRouter(): ReturnType<typeof createHashRouter> {

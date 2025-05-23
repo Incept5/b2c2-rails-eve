@@ -7,37 +7,57 @@ export const databaseConfig = registerAs('database', () => {
   
   const configs: Record<string, Knex.Config> = {
     test: {
-      client: 'sqlite3',
-      connection: ':memory:',
-      useNullAsDefault: true,
+      client: 'pg',
+      connection: {
+        host: process.env.DB_HOST || 'localhost',
+        port: parseInt(process.env.DB_PORT || '5432'),
+        user: process.env.DB_USER || 'postgres',
+        password: process.env.DB_PASSWORD || 'postgres',
+        database: process.env.DB_NAME || 'fullstack_starter',
+      },
       migrations: {
         directory: path.join(__dirname, '../migrations'),
         extension: 'ts',
       },
+      pool: {
+        min: 2,
+        max: 10,
+      },
     },
     dev: {
-      client: 'sqlite3',
+      client: 'pg',
       connection: {
-        filename: path.join(process.cwd(), './dev.sqlite3'),
+        host: process.env.DB_HOST || 'localhost',
+        port: parseInt(process.env.DB_PORT || '5432'),
+        user: process.env.DB_USER || 'postgres',
+        password: process.env.DB_PASSWORD || 'postgres',
+        database: process.env.DB_NAME || 'fullstack_starter',
       },
-      useNullAsDefault: true,
       migrations: {
         directory: path.join(__dirname, '../migrations'),
         extension: 'js',
+      },
+      pool: {
+        min: 2,
+        max: 10,
       },
     },
     prod: {
       client: 'pg',
       connection: {
-        host: 'localhost',
-        port: 5432,
-        user: 'postgres',
-        password: 'postgres',
-        database: 'postgres',
+        host: process.env.DB_HOST || 'localhost',
+        port: parseInt(process.env.DB_PORT || '5432'),
+        user: process.env.DB_USER || 'postgres',
+        password: process.env.DB_PASSWORD || 'postgres',
+        database: process.env.DB_NAME || 'fullstack_starter',
       },
       migrations: {
         directory: path.join(__dirname, '../migrations'),
         extension: 'js',
+      },
+      pool: {
+        min: 2,
+        max: 10,
       },
     },
   };

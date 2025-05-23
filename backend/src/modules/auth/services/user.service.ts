@@ -1,15 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { UserRepository } from '../repositories/user.repository';
 import { User } from '../entities/user.entity';
-import * as bcrypt from 'bcrypt';
+import { PasswordService } from './password.service';
 import { ulid } from 'ulid';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(
+    private readonly userRepository: UserRepository,
+    private readonly passwordService: PasswordService,
+  ) {}
 
   async create(email: string, firstName: string, lastName: string, password: string): Promise<User> {
-    const passwordHash = await bcrypt.hash(password, 10);
+    const passwordHash = await this.passwordService.hash(password);
     return this.userRepository.create({
       id: ulid(),
       email,
@@ -29,7 +32,7 @@ export class UserService {
 
   async update(id: string, updates: Partial<User>): Promise<User> {
     if (updates.passwordHash) {
-      updates.passwordHash = await bcrypt.hash(updates.passwordHash, 10);
+      updates.passwordHash = await this.passwordService.hash(updates.passwordHash);
     }
     return this.userRepository.update(id, updates);
   }
@@ -39,6 +42,6 @@ export class UserService {
   }
 
   async validatePassword(user: User, password: string): Promise<boolean> {
-    return bcrypt.compare(password, user.passwordHash);
+    return this.passwordService.verify(password, user.passwordHash);
   }
 }

@@ -6,6 +6,7 @@ import { AuthController } from './controllers/auth.controller';
 import { UsersController } from './controllers/users.controller';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { PasswordService } from './services/password.service';
 import { UserRepository } from './repositories/user.repository';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { jwtConfig } from '../../config/jwt.config';
@@ -26,7 +27,7 @@ import { jwtConfig } from '../../config/jwt.config';
     }),
   ],
   controllers: [AuthController, UsersController],
-  providers: [AuthService, UserService, UserRepository, JwtStrategy],
+  providers: [AuthService, UserService, PasswordService, UserRepository, JwtStrategy],
   exports: [AuthService, UserService],
 })
 export class AuthModule {}

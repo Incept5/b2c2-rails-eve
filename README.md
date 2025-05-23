@@ -34,14 +34,31 @@ git clone <repository-url>
 cd fullstack-starter
 ```
 
-2. Start the server:
+2. **For Development (Recommended)**: Open 2 terminals and run:
 
-```bash
-./start.sh
-```
+   **Terminal 1** - Backend with database:
+   ```bash
+   ./buildAndDev.sh
+   ```
+
+   **Terminal 2** - Frontend with hot reload:
+   ```bash
+   ./frontendDev.sh
+   ```
+
+   This approach provides:
+   - Backend hot reload (automatically restarts when you change backend code)
+   - Frontend hot reload (instantly reflects frontend changes)
+   - PostgreSQL database running in Docker
+   - Separate terminal outputs for easier debugging
+
+3. **For Production**: Start the full application:
+   ```bash
+   ./start.sh
+   ```
 
 The application will be available at:
-- Frontend: http://localhost:3000
+- Frontend: http://localhost:3000 (development) or http://localhost:3000 (production)
 - Backend API: http://localhost:3000/api
 - Swagger Documentation: http://localhost:3000/api/docs
 
@@ -100,6 +117,8 @@ pnpm run test
 
 The project includes several utility scripts in the root directory:
 
+- `./buildAndDev.sh` - Start backend with database and hot reload (for development)
+- `./frontendDev.sh` - Start frontend with hot reload (for development)
 - `./start.sh` - Start the application
 - `./stop.sh` - Stop the application
 - `./restart.sh` - Restart the application

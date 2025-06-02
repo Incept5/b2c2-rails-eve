@@ -22,6 +22,14 @@
     "create": "Create Entity",
     "edit": "Edit Entity",
     "delete": "Delete Entity",
+    "view": "View Details",
+    "list": "Entity List",
+    "noEntities": "No legal entities found",
+    "loading": "Loading entities...",
+    "createSuccess": "Legal entity created successfully",
+    "updateSuccess": "Legal entity updated successfully",
+    "deleteSuccess": "Legal entity deleted successfully",
+    "deleteConfirm": "Are you sure you want to delete this entity?",
     "types": {
       "bank": "Bank",
       "exchanger": "Exchange",
@@ -29,6 +37,48 @@
       "custodian": "Custodian",
       "fx_provider": "FX Provider",
       "branch": "Branch"
+    },
+    "form": {
+      "name": "Entity Name",
+      "namePlaceholder": "Enter entity name",
+      "country": "Country",
+      "countryPlaceholder": "Select country",
+      "entityType": "Entity Type",
+      "entityTypePlaceholder": "Select entity type",
+      "timezone": "Timezone",
+      "timezonePlaceholder": "Select timezone",
+      "regulatoryScope": "Regulatory Scope",
+      "regulatoryScopePlaceholder": "Enter regulatory scope (optional)",
+      "parentEntity": "Parent Entity",
+      "parentEntityPlaceholder": "Select parent entity (for branches)",
+      "capabilities": "Capabilities",
+      "capabilitiesDescription": "Capabilities are automatically set based on entity type",
+      "submit": "Create Entity",
+      "submitUpdate": "Update Entity",
+      "cancel": "Cancel",
+      "required": "This field is required",
+      "validation": {
+        "nameRequired": "Entity name is required",
+        "countryRequired": "Country is required",
+        "entityTypeRequired": "Entity type is required",
+        "timezoneRequired": "Timezone is required",
+        "parentRequiredForBranch": "Branch entities must have a parent entity"
+      }
+    },
+    "capabilities": {
+      "canHostAccounts": "Can host bank accounts",
+      "canHostWallets": "Can host crypto wallets",
+      "canHostFxNodes": "Can host FX nodes",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    "filters": {
+      "search": "Search entities...",
+      "country": "Filter by Country",
+      "entityType": "Filter by Type",
+      "capabilities": "Filter by Capabilities",
+      "all": "All",
+      "clear": "Clear Filters"
     }
   },
   "nodes": {
@@ -84,6 +134,7 @@
     "edit": "Edit",
     "delete": "Delete",
     "create": "Create",
+    "created": "Created",
     "loading": "Loading...",
     "error": "Error",
     "success": "Success",

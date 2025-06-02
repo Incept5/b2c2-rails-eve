@@ -16,22 +16,71 @@
     "graph": "Graphe de Réseau",
     "analysis": "Analyse de Chemin"
   },
-  "entities": {
+"entities": {
     "title": "Entités Légales",
-    "description": "Gérer les banques, exchanges et fournisseurs de services financiers",
+    "description": "Gérer les banques, bourses et fournisseurs de services financiers",
     "create": "Créer une Entité",
     "edit": "Modifier l'Entité",
     "delete": "Supprimer l'Entité",
+    "view": "Voir les Détails",
+    "list": "Liste des Entités",
+    "noEntities": "Aucune entité légale trouvée",
+    "loading": "Chargement des entités...",
+    "createSuccess": "Entité légale créée avec succès",
+    "updateSuccess": "Entité légale mise à jour avec succès",
+    "deleteSuccess": "Entité légale supprimée avec succès",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette entité?",
     "types": {
       "bank": "Banque",
-      "exchanger": "Exchange",
+      "exchanger": "Bourse",
       "payment_provider": "Fournisseur de Paiement",
       "custodian": "Dépositaire",
       "fx_provider": "Fournisseur FX",
       "branch": "Succursale"
+    },
+    "form": {
+      "name": "Nom de l'Entité",
+      "namePlaceholder": "Saisir le nom de l'entité",
+      "country": "Pays",
+      "countryPlaceholder": "Sélectionner le pays",
+      "entityType": "Type d'Entité",
+      "entityTypePlaceholder": "Sélectionner le type d'entité",
+      "timezone": "Fuseau Horaire",
+      "timezonePlaceholder": "Sélectionner le fuseau horaire",
+      "regulatoryScope": "Portée Réglementaire",
+      "regulatoryScopePlaceholder": "Saisir la portée réglementaire (optionnel)",
+      "parentEntity": "Entité Parente",
+      "parentEntityPlaceholder": "Sélectionner l'entité parente (pour les succursales)",
+      "capabilities": "Capacités",
+      "capabilitiesDescription": "Les capacités sont automatiquement définies selon le type d'entité",
+      "submit": "Créer l'Entité",
+      "submitUpdate": "Mettre à Jour l'Entité",
+      "cancel": "Annuler",
+      "required": "Ce champ est requis",
+      "validation": {
+        "nameRequired": "Le nom de l'entité est requis",
+        "countryRequired": "Le pays est requis",
+        "entityTypeRequired": "Le type d'entité est requis",
+        "timezoneRequired": "Le fuseau horaire est requis",
+        "parentRequiredForBranch": "Les entités de type succursale doivent avoir une entité parente"
+      }
+    },
+    "capabilities": {
+      "canHostAccounts": "Peut héberger des comptes bancaires",
+      "canHostWallets": "Peut héberger des portefeuilles crypto",
+      "canHostFxNodes": "Peut héberger des nœuds FX",
+      "enabled": "Activé",
+      "disabled": "Désactivé"
+    },
+    "filters": {
+      "search": "Rechercher des entités...",
+      "country": "Filtrer par Pays",
+      "entityType": "Filtrer par Type",
+      "capabilities": "Filtrer par Capacités",
+      "all": "Tous",
+      "clear": "Effacer les Filtres"
     }
-  },
-  "nodes": {
+  },  "nodes": {
     "title": "Nœuds d'Actifs",
     "description": "Gérer les comptes bancaires, portefeuilles crypto et venues FX",
     "create": "Créer un Nœud",
@@ -84,6 +133,7 @@
     "edit": "Modifier",
     "delete": "Supprimer",
     "create": "Créer",
+    "created": "Créé",
     "loading": "Chargement...",
     "error": "Erreur",
     "success": "Succès",

@@ -5,12 +5,22 @@ import { getDefaultLayout } from './components/layout'
 import HomePage from './pages/home'
 import { LoginPage } from './pages/auth/login'
 import { SignupPage } from './pages/auth/signup'
+import LegalEntitiesPage from './pages/legal-entities'
+import CreateLegalEntityPage from './pages/legal-entities/create'
 import { isAuthEnabled } from './lib/auth-config'
 
 const baseRoutes: RouteObject[] = [
   {
     path: '/',
     Component: HomePage,
+  },
+  {
+    path: '/entities',
+    Component: LegalEntitiesPage,
+  },
+  {
+    path: '/entities/create',
+    Component: CreateLegalEntityPage,
   },
 ]
 

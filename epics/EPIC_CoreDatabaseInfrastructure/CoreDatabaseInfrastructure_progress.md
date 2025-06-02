@@ -17,11 +17,12 @@ completion_percentage: 50
 
 ### Phase 1: Reference Data Foundation
 - [ ] STORY_01_LegalEntityDataModel
-  - [ ] TASK_01_CreateLegalEntitiesTable
-  - [ ] TASK_02_ImplementLegalEntityConstraints
+  - [ ] TASK_01_CreateLegalEntitiesMigration
+  - [ ] TASK_02_CreateLegalEntityEntity
   - [ ] TASK_03_CreateLegalEntityRepository
   - [ ] TASK_04_CreateLegalEntityService
   - [ ] TASK_05_CreateLegalEntityController
+  - [ ] TASK_06_CreateLegalEntityModule
 
 - [ ] STORY_02_PaymentSchemeDataModel
   - [ ] TASK_01_CreatePaymentSchemesTable
@@ -67,11 +68,12 @@ completion_percentage: 50
 - **Tech Stack**: Following existing patterns from auth module for consistency
 
 ## Next Steps
-1. Break down STORY_01_LegalEntityDataModel into detailed tasks
-2. Begin implementation with reference data tables (legal entities, payment schemes, external parties)
-3. Move to core graph entities (asset nodes, FX nodes)
-4. Complete with edge relationships (payment methods)
-5. Validate full graph structure and relationships
+1. ✅ Break down STORY_01_LegalEntityDataModel into detailed tasks - COMPLETED
+2. Begin implementation with TASK_01_CreateLegalEntitiesMigration
+3. Continue with reference data tables (payment schemes, external parties)
+4. Move to core graph entities (asset nodes, FX nodes)
+5. Complete with edge relationships (payment methods)
+6. Validate full graph structure and relationships
 
 ## Key Milestones
 - **Milestone 1**: Reference data tables implemented (Stories 1-3)

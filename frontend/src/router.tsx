@@ -7,6 +7,7 @@ import { LoginPage } from './pages/auth/login'
 import { SignupPage } from './pages/auth/signup'
 import LegalEntitiesPage from './pages/legal-entities'
 import CreateLegalEntityPage from './pages/legal-entities/create'
+import LegalEntityDetailPage from './pages/legal-entities/[id]'
 import { isAuthEnabled } from './lib/auth-config'
 
 const baseRoutes: RouteObject[] = [
@@ -21,6 +22,10 @@ const baseRoutes: RouteObject[] = [
   {
     path: '/entities/create',
     Component: CreateLegalEntityPage,
+  },
+  {
+    path: '/entities/:id',
+    Component: LegalEntityDetailPage,
   },
 ]
 

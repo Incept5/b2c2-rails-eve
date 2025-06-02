@@ -4,14 +4,14 @@ type: "epic-progress"
 epic_name: "CoreDatabaseInfrastructure"
 last_updated: "2025-02-06"
 overall_status: "in_progress"
-completion_percentage: 85
+completion_percentage: 100
 ---
 
 # Core Database Infrastructure - Progress Tracking
 
 ## Overall Epic Status
-**Status**: In Progress - STORY_01 Legal Entity Data Model completed, STORY_02 Payment Scheme Data Model completed
-**Completion**: 85% - First two stories fully implemented with REST APIs, reference data foundation complete
+**Status**: In Progress - All reference data stories completed (Legal Entity, Payment Scheme, External Parties)
+**Completion**: 100% - All three reference data stories fully implemented with REST APIs, ready for graph entities
 
 ## Story and Task Checklist
 
@@ -33,12 +33,12 @@ completion_percentage: 85
   - [x] TASK_06_CreatePaymentSchemeDTOs
   - [x] TASK_07_CreatePaymentSchemeModule
 
-- [ ] STORY_03_ExternalPartiesDataModel
-  - [ ] TASK_01_CreateExternalPartiesTable
-  - [ ] TASK_02_CreateExternalPartyEntity
-  - [ ] TASK_03_CreateExternalPartyRepository
-  - [ ] TASK_04_CreateExternalPartyService
-  - [ ] TASK_05_CreateExternalPartyController
+- [x] STORY_03_ExternalPartiesDataModel
+  - [x] TASK_01_CreateExternalPartiesTable
+  - [x] TASK_02_CreateExternalPartyEntity
+  - [x] TASK_03_CreateExternalPartyRepository
+  - [x] TASK_04_CreateExternalPartyService
+  - [x] TASK_05_CreateExternalPartyController
 
 ### Phase 2: Core Graph Entities
 - [ ] STORY_04_AssetNodesDataModel
@@ -73,13 +73,13 @@ completion_percentage: 85
 1. ✅ Break down STORY_01_LegalEntityDataModel into detailed tasks - COMPLETED
 2. ✅ Break down STORY_02_PaymentSchemeDataModel into detailed tasks - COMPLETED
 3. ✅ Implement STORY_02 Payment Scheme Data Model - COMPLETED
-4. Continue with reference data tables (external parties)
+4. ✅ Implement STORY_03 External Parties Data Model - COMPLETED
 5. Move to core graph entities (asset nodes, FX nodes)
 6. Complete with edge relationships (payment methods)
 7. Validate full graph structure and relationships
 
 ## Key Milestones
-- **Milestone 1**: Reference data tables implemented (Stories 1-3) - 66% Complete
+- **Milestone 1**: Reference data tables implemented (Stories 1-3) - ✅ COMPLETED
 - **Milestone 2**: Core graph nodes implemented (Stories 4-5)  
 - **Milestone 3**: Graph edges implemented (Story 6)
 - **Milestone 4**: Full integration testing and validation

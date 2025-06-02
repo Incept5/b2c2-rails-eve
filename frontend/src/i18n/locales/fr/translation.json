@@ -1,10 +1,97 @@
 {
-  "title": "Vite React Tailwind Starter",
+  "title": "Outil de Modélisation de Graphe B2C2 Rails",
   "features": "Fonctionnalités",
-  "modernstack": "Stack moderne et efficace",
-  "modernstack-desc": "Construit avec vite, react, tailwindcss, shadcnui et plus encore",
-  "i18nsupport": "Support i18n intégré",
-  "i18nsupport-desc": "Expédiez votre produit avec différentes langues nativement",
-  "hero-title": "Créez des applications avec la meilleure expérience de développement que nous aimons",
-  "get-started": "Commencer"
+  "modernstack": "Modélisation de Graphe Avancée",
+  "modernstack-desc": "Modélisez les réseaux de paiement avec banques, exchanges et portefeuilles crypto en graphes connectés",
+  "i18nsupport": "Analyse Complète de Réseau",
+  "i18nsupport-desc": "Visualisez, analysez et découvrez les routes de paiement à travers votre réseau financier",
+  "hero-title": "Bienvenue dans l'Outil de Modélisation de Graphe B2C2 Rails",
+  "get-started": "Commencer la Modélisation",
+  "navigation": {
+    "dashboard": "Tableau de Bord",
+    "entities": "Entités Légales",
+    "nodes": "Nœuds d'Actifs",
+    "schemes": "Schémas de Paiement",
+    "methods": "Méthodes de Paiement",
+    "graph": "Graphe de Réseau",
+    "analysis": "Analyse de Chemin"
+  },
+  "entities": {
+    "title": "Entités Légales",
+    "description": "Gérer les banques, exchanges et fournisseurs de services financiers",
+    "create": "Créer une Entité",
+    "edit": "Modifier l'Entité",
+    "delete": "Supprimer l'Entité",
+    "types": {
+      "bank": "Banque",
+      "exchanger": "Exchange",
+      "payment_provider": "Fournisseur de Paiement",
+      "custodian": "Dépositaire",
+      "fx_provider": "Fournisseur FX",
+      "branch": "Succursale"
+    }
+  },
+  "nodes": {
+    "title": "Nœuds d'Actifs",
+    "description": "Gérer les comptes bancaires, portefeuilles crypto et venues FX",
+    "create": "Créer un Nœud",
+    "edit": "Modifier le Nœud",
+    "delete": "Supprimer le Nœud",
+    "types": {
+      "bank_account": "Compte Bancaire",
+      "crypto_wallet": "Portefeuille Crypto",
+      "external_bank_account": "Compte Bancaire Externe",
+      "external_crypto_wallet": "Portefeuille Crypto Externe"
+    }
+  },
+  "schemes": {
+    "title": "Schémas de Paiement",
+    "description": "Définir les rails de paiement et leurs caractéristiques",
+    "create": "Créer un Schéma",
+    "edit": "Modifier le Schéma",
+    "types": {
+      "fiat": "Fiat",
+      "crypto": "Crypto",
+      "fx": "Change de Devises"
+    }
+  },
+  "methods": {
+    "title": "Méthodes de Paiement",
+    "description": "Configurer les connexions entre comptes et portefeuilles",
+    "create": "Créer une Méthode",
+    "edit": "Modifier la Méthode"
+  },
+  "graph": {
+    "title": "Graphe de Réseau",
+    "description": "Visualiser la topologie de votre réseau de paiement",
+    "filters": "Filtres",
+    "zoom": "Zoom",
+    "reset": "Réinitialiser la Vue"
+  },
+  "analysis": {
+    "title": "Analyse de Chemin",
+    "description": "Découvrir les routes de paiement entre comptes",
+    "source": "Compte Source",
+    "destination": "Compte Destination",
+    "amount": "Montant",
+    "currency": "Devise",
+    "find_paths": "Trouver les Chemins",
+    "results": "Résultats de Chemin"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "create": "Créer",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "name": "Nom",
+    "country": "Pays",
+    "currency": "Devise",
+    "status": "Statut",
+    "balance": "Solde",
+    "actions": "Actions"
+  }
 }

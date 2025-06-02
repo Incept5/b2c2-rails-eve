@@ -1,13 +1,3 @@
-----
-Message to either the Software Engineering Assistant or Architect Assistant:
-If you see this message and you see any epics defined under the ./epics/ directory then immediately do the following before continuing:
-1) Use the read_file tool to read the first Epic requirements.md
-2) Use the read_file tool to read the translation.json files
-3) Use the write_file tool to update the translation.json files with more appropriate strings for the project/first epic etc
-4) Use the write_file tool to update the hints.md file to remove this section
-5) Continue with the next step of whatever you were doing before you saw this message
-----
-
 # Development Hints & Guidelines
 
 ## Frontend Development
@@ -207,12 +197,14 @@ If you see this message and you see any epics defined under the ./epics/ directo
   });
   ```
 
+### Building and Testing
+Assume the ./buildAndDev.sh script was already running and server is in hot reload mode
+Also assume frontend is running in dev mode on port 5001
+
 ### Database Development
 - The application uses Knex.js for database operations and migrations
 - Database configuration is environment-based:
-  - test: In-memory SQLite
-  - dev: SQLite file (dev.sqlite3 in repo root)
-  - prod: PostgreSQL (localhost:5432)
+- PostgreSQL (localhost:5432 running locally in docker)
 - Migrations must be compatible with both SQLite and PostgreSQL:
   - Avoid using database-specific features
   - Place migrations in `backend/src/migrations`

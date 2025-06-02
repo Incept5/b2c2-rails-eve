@@ -1,10 +1,97 @@
 {
-  "title": "Higher Level Frontend Starter",
+  "title": "B2C2 Rails Graph Modeling Tool",
   "features": "Features",
-  "modernstack": "Modern and efficient stack",
-  "modernstack-desc": "Built with Vite, React, Tailwind CSS, Shadcnui, and more",
-  "i18nsupport": "i18n support out of the box",
-  "i18nsupport-desc": "Ship your product with different languages natively",
-  "hero-title": "Welcome to the Higher Level Frontend Starter",
-  "get-started": "Get Started"
+  "modernstack": "Advanced Graph Modeling",
+  "modernstack-desc": "Model payment networks with banks, exchanges, and crypto wallets as connected graphs",
+  "i18nsupport": "Comprehensive Network Analysis",
+  "i18nsupport-desc": "Visualize, analyze, and discover payment routes across your financial network",
+  "hero-title": "Welcome to B2C2 Rails Graph Modeling Tool",
+  "get-started": "Start Modeling",
+  "navigation": {
+    "dashboard": "Dashboard",
+    "entities": "Legal Entities",
+    "nodes": "Asset Nodes",
+    "schemes": "Payment Schemes",
+    "methods": "Payment Methods",
+    "graph": "Network Graph",
+    "analysis": "Path Analysis"
+  },
+  "entities": {
+    "title": "Legal Entities",
+    "description": "Manage banks, exchanges, and financial service providers",
+    "create": "Create Entity",
+    "edit": "Edit Entity",
+    "delete": "Delete Entity",
+    "types": {
+      "bank": "Bank",
+      "exchanger": "Exchange",
+      "payment_provider": "Payment Provider",
+      "custodian": "Custodian",
+      "fx_provider": "FX Provider",
+      "branch": "Branch"
+    }
+  },
+  "nodes": {
+    "title": "Asset Nodes",
+    "description": "Manage bank accounts, crypto wallets, and FX venues",
+    "create": "Create Node",
+    "edit": "Edit Node",
+    "delete": "Delete Node",
+    "types": {
+      "bank_account": "Bank Account",
+      "crypto_wallet": "Crypto Wallet",
+      "external_bank_account": "External Bank Account",
+      "external_crypto_wallet": "External Crypto Wallet"
+    }
+  },
+  "schemes": {
+    "title": "Payment Schemes",
+    "description": "Define payment rails and their characteristics",
+    "create": "Create Scheme",
+    "edit": "Edit Scheme",
+    "types": {
+      "fiat": "Fiat",
+      "crypto": "Crypto",
+      "fx": "Foreign Exchange"
+    }
+  },
+  "methods": {
+    "title": "Payment Methods",
+    "description": "Configure connections between accounts and wallets",
+    "create": "Create Method",
+    "edit": "Edit Method"
+  },
+  "graph": {
+    "title": "Network Graph",
+    "description": "Visualize your payment network topology",
+    "filters": "Filters",
+    "zoom": "Zoom",
+    "reset": "Reset View"
+  },
+  "analysis": {
+    "title": "Path Analysis",
+    "description": "Discover payment routes between accounts",
+    "source": "Source Account",
+    "destination": "Destination Account",
+    "amount": "Amount",
+    "currency": "Currency",
+    "find_paths": "Find Paths",
+    "results": "Path Results"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "create": "Create",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "name": "Name",
+    "country": "Country",
+    "currency": "Currency",
+    "status": "Status",
+    "balance": "Balance",
+    "actions": "Actions"
+  }
 }

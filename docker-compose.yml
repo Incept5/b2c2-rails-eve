@@ -1,17 +1,17 @@
 services:
   postgres:
     image: postgres:15
-    container_name: fullstack-postgres
+    container_name: b2c2rails-postgres
     environment:
-      POSTGRES_DB: fullstack_starter
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${DB_NAME:-b2c2rails}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
       interval: 10s
       timeout: 5s
       retries: 5

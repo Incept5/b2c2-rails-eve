@@ -9,7 +9,7 @@
 
 ### 2. Added PostgreSQL with Docker Compose
 - Created `docker-compose.yml` with PostgreSQL 15
-- Database: `fullstack_starter`
+- Database: `b2c2rails`
 - Default credentials: `postgres/postgres`
 - Port: `5432`
 
@@ -26,7 +26,7 @@
   - `DB_PORT` (default: 5432)
   - `DB_USER` (default: postgres)
   - `DB_PASSWORD` (default: postgres)
-  - `DB_NAME` (default: fullstack_starter)
+  - `DB_NAME` (default: b2c2rails)
 
 ### 5. Updated Scripts
 - `buildAndDev.sh` now starts PostgreSQL automatically
@@ -61,7 +61,7 @@ docker-compose down
 docker-compose logs postgres
 
 # Connect to PostgreSQL
-docker-compose exec postgres psql -U postgres -d fullstack_starter
+docker-compose exec postgres psql -U postgres -d b2c2rails
 ```
 
 ## Environment Variables
@@ -73,7 +73,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=postgres
-DB_NAME=fullstack_starter
+DB_NAME=b2c2rails
 ```
 
 ## Password Migration

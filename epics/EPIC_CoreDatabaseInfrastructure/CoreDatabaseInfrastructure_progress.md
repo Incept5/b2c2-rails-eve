@@ -1,27 +1,17 @@
-## Story and Task Checklist
 
-### Phase 1: Reference Data Foundation
-- [ ] STORY_01_LegalEntityDataModel
-  - [x] TASK_01_CreateLegalEntitiesMigration
-  - [x] TASK_02_CreateLegalEntityEntity
-  - [x] TASK_03_CreateLegalEntityRepository
-  - [ ] TASK_04_CreateLegalEntityService
-  - [ ] TASK_05_CreateLegalEntityController
-  - [ ] TASK_06_CreateLegalEntityModule
-=======
 ---
 type: "epic-progress"
 epic_name: "CoreDatabaseInfrastructure"
 last_updated: "2025-02-06"
 overall_status: "in_progress"
-completion_percentage: 75
+completion_percentage: 70
 ---
 
 # Core Database Infrastructure - Progress Tracking
 
 ## Overall Epic Status
-**Status**: In Progress - STORY_01 Legal Entity Data Model completed
-**Completion**: 75% - First story fully implemented with REST API
+**Status**: In Progress - STORY_01 Legal Entity Data Model completed, STORY_02 database layer implemented
+**Completion**: 70% - First story fully implemented with REST API, second story database layer (migration, entity, repository) completed
 
 ## Story and Task Checklist
 
@@ -33,25 +23,15 @@ completion_percentage: 75
   - [x] TASK_04_CreateLegalEntityService
   - [x] TASK_05_CreateLegalEntityController
   - [x] TASK_06_CreateLegalEntityModule
-=======
-
-## Story and Task Checklist
-
-### Phase 1: Reference Data Foundation
-- [ ] STORY_01_LegalEntityDataModel
-  - [x] TASK_01_CreateLegalEntitiesMigration
-  - [x] TASK_02_CreateLegalEntityEntity
-  - [x] TASK_03_CreateLegalEntityRepository
-  - [ ] TASK_04_CreateLegalEntityService
-  - [ ] TASK_05_CreateLegalEntityController
-  - [ ] TASK_06_CreateLegalEntityModule
 
 - [ ] STORY_02_PaymentSchemeDataModel
-  - [ ] TASK_01_CreatePaymentSchemesTable
-  - [ ] TASK_02_ImplementSchemeValidation
-  - [ ] TASK_03_CreatePaymentSchemeRepository
+  - [x] TASK_01_CreatePaymentSchemesMigration
+  - [x] TASK_02_CreatePaymentSchemeEntity
+  - [x] TASK_03_CreatePaymentSchemeRepository
   - [ ] TASK_04_CreatePaymentSchemeService
   - [ ] TASK_05_CreatePaymentSchemeController
+  - [ ] TASK_06_CreatePaymentSchemeDTOs
+  - [ ] TASK_07_CreatePaymentSchemeModule
 
 - [ ] STORY_03_ExternalPartiesDataModel
   - [ ] TASK_01_CreateExternalPartiesTable
@@ -91,14 +71,17 @@ completion_percentage: 75
 
 ## Next Steps
 1. ✅ Break down STORY_01_LegalEntityDataModel into detailed tasks - COMPLETED
-2. Begin implementation with TASK_01_CreateLegalEntitiesMigration
-3. Continue with reference data tables (payment schemes, external parties)
-4. Move to core graph entities (asset nodes, FX nodes)
-5. Complete with edge relationships (payment methods)
-6. Validate full graph structure and relationships
+2. ✅ Break down STORY_02_PaymentSchemeDataModel into detailed tasks - COMPLETED
+3. Begin implementation of STORY_02 tasks starting with TASK_01_CreatePaymentSchemesMigration
+4. Continue with reference data tables (external parties)
+5. Move to core graph entities (asset nodes, FX nodes)
+6. Complete with edge relationships (payment methods)
+7. Validate full graph structure and relationships
 
 ## Key Milestones
 - **Milestone 1**: Reference data tables implemented (Stories 1-3)
 - **Milestone 2**: Core graph nodes implemented (Stories 4-5)  
 - **Milestone 3**: Graph edges implemented (Story 6)
 - **Milestone 4**: Full integration testing and validation
+
+---

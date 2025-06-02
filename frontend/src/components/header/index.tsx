@@ -15,6 +15,7 @@ export function Header(props: IProps) {
   const navigationItems = [
     { path: '/', label: t('navigation.dashboard') },
     { path: '/entities', label: t('navigation.entities') },
+    { path: '/payment-schemes', label: t('navigation.schemes') },
   ]
 
   return (

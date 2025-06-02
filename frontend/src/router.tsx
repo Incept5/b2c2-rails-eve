@@ -8,6 +8,9 @@ import { SignupPage } from './pages/auth/signup'
 import LegalEntitiesPage from './pages/legal-entities'
 import CreateLegalEntityPage from './pages/legal-entities/create'
 import LegalEntityDetailPage from './pages/legal-entities/[id]'
+import PaymentSchemesPage from './pages/payment-schemes'
+import CreatePaymentSchemePage from './pages/payment-schemes/create'
+import PaymentSchemeDetailPage from './pages/payment-schemes/[id]'
 import { isAuthEnabled } from './lib/auth-config'
 
 const baseRoutes: RouteObject[] = [
@@ -26,6 +29,18 @@ const baseRoutes: RouteObject[] = [
   {
     path: '/entities/:id',
     Component: LegalEntityDetailPage,
+  },
+  {
+    path: '/payment-schemes',
+    Component: PaymentSchemesPage,
+  },
+  {
+    path: '/payment-schemes/create',
+    Component: CreatePaymentSchemePage,
+  },
+  {
+    path: '/payment-schemes/:id',
+    Component: PaymentSchemeDetailPage,
   },
 ]
 

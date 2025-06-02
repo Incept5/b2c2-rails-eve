@@ -68,6 +68,61 @@ export const theme = {
         content: 'container mx-auto px-4',
       }
     },
+
+    // Payment Scheme specific styles
+    paymentScheme: {
+      card: {
+        base: 'bg-white/90 shadow-lg backdrop-blur-sm transition-all duration-200 hover:shadow-xl cursor-pointer',
+        fiat: 'border-blue-200 hover:border-blue-300',
+        crypto: 'border-orange-200 hover:border-orange-300',
+        fx: 'border-green-200 hover:border-green-300',
+      },
+      type: {
+        fiat: {
+          badge: 'bg-blue-100 text-blue-800',
+          border: 'border-blue-200',
+          accent: 'text-blue-600',
+          bg: 'bg-blue-50',
+        },
+        crypto: {
+          badge: 'bg-orange-100 text-orange-800',
+          border: 'border-orange-200',
+          accent: 'text-orange-600',
+          bg: 'bg-orange-50',
+        },
+        fx: {
+          badge: 'bg-green-100 text-green-800',
+          border: 'border-green-200',
+          accent: 'text-green-600',
+          bg: 'bg-green-50',
+        },
+      },
+      status: {
+        operational: 'text-green-600 bg-green-50',
+        notOperational: 'text-red-600 bg-red-50',
+        checking: 'text-yellow-600 bg-yellow-50',
+      },
+      form: {
+        container: 'bg-white/90 p-8 rounded-lg shadow-xl backdrop-blur-sm max-w-4xl mx-auto',
+        section: 'space-y-4 p-6 bg-gray-50/50 rounded-lg border',
+        sectionTitle: 'text-lg font-semibold text-gray-800 mb-4',
+        label: 'block text-sm font-medium text-gray-700 mb-2',
+        input: 'w-full px-3 py-2 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500',
+        select: 'w-full px-3 py-2 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500',
+        checkbox: 'h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded',
+        timeInput: 'w-32 px-3 py-2 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500',
+      },
+      page: {
+        container: 'min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 py-8',
+        header: 'bg-white/90 shadow-sm border-b border-blue-100 px-6 py-4 mb-8',
+        content: 'container mx-auto px-4',
+      },
+      availability: {
+        operational: 'bg-green-50 border-green-200 text-green-800',
+        restricted: 'bg-yellow-50 border-yellow-200 text-yellow-800',
+        offline: 'bg-red-50 border-red-200 text-red-800',
+      },
+    },
   },
 }
 

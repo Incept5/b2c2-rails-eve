@@ -1,42 +1,85 @@
-# Full Stack Starter Project
 
-A modern, full stack application starter template built with NestJS, React, TypeScript, and SQLite/PostgreSQL.
+# B2C2 Rails Graph Modeling Tool
+
+A sophisticated graph modeling application for visualizing and managing B2C2's payment network infrastructure. This tool models bank accounts, crypto wallets, FX venues, and payment methods as a connected graph, enabling path discovery, network analysis, and payment route optimization for modeling purposes.
+
+## Project Overview
+
+The B2C2 Rails Graph Modeling Tool is designed to represent complex payment networks as an interactive graph where:
+- **Nodes** represent accounts (bank accounts, crypto wallets) and FX venues
+- **Edges** represent payment methods connecting these accounts
+- **Path Discovery** algorithms find optimal routes between source and destination accounts
+- **Visual Interface** provides intuitive graph management and visualization
+
+### Key Features
+
+- **Graph Database**: Comprehensive data model for payment network entities
+- **Interactive Visualization**: Web-based graph visualization with filtering and search
+- **Path Discovery**: Advanced algorithms for finding payment routes with constraints
+- **Network Analysis**: Tools for understanding payment network topology
+- **Reference Data Management**: Centralized management of currencies, countries, and schemes
 
 ## Tech Stack
 
 ### Backend
 - **Framework**: NestJS (Node.js + TypeScript)
+- **Database**: PostgreSQL with JSON support for complex data structures
+- **ORM**: Knex.js for migrations and query building
 - **Authentication**: JWT with Passport.js
-- **Database**: 
-  - Development: SQLite
-  - Production: PostgreSQL
-- **ORM**: Knex.js
 - **API Documentation**: Swagger/OpenAPI
-- **Testing**: Jest + Supertest
+- **Testing**: Jest + Supertest for E2E testing
 
 ### Frontend
-- **Framework**: React (Create React App) with TypeScript
-- **UI Components**: Shadcn UI
-- **Styling**: Tailwind CSS
-- **Build Tool**: Craco (Create React App Configuration Override)
+- **Framework**: React with TypeScript
+- **UI Components**: Shadcn UI with Tailwind CSS
+- **Graph Visualization**: D3.js for interactive network diagrams
+- **State Management**: React Context and custom hooks
+- **Internationalization**: i18next for English/French support
+- **Build Tool**: Vite for fast development and builds
 
-## Prerequisites
+## Core Data Models
 
-- Node.js (v16 or higher)
-- pnpm (preferred package manager)
-- PostgreSQL (for production)
+The application models the payment network using these core entities:
+
+### Nodes
+- **Legal Entities**: Banks, exchangers, payment providers, custodians
+- **Asset Nodes**: Bank accounts and crypto wallets (internal and external)
+- **FX Nodes**: Foreign exchange venues for currency conversion
+
+### Edges
+- **Payment Methods**: Connections between accounts defining available payment routes
+- **Payment Schemes**: Templates defining rules, fees, and constraints (SEPA, SWIFT, crypto networks)
+
+### Reference Data
+- **External Parties**: Clients, providers, employees who own external accounts
+- **Configuration**: Currencies, countries, validation rules
 
 ## Getting Started
 
-1. Clone the repository:
+### Prerequisites
+
+- Node.js (v18 or higher)
+- pnpm (preferred package manager)
+- PostgreSQL (v14 or higher)
+- Docker (for containerized PostgreSQL)
+
+### Development Setup
+
+1. **Clone and Setup**:
 ```bash
 git clone <repository-url>
-cd fullstack-starter
+cd b2c2-rails-eve
 ```
 
-2. **For Development (Recommended)**: Open 2 terminals and run:
+2. **Environment Configuration**:
+```bash
+cp .env.example .env
+# Edit .env with your database credentials and configuration
+```
 
-   **Terminal 1** - Backend with database:
+3. **Development Mode (Recommended)**:
+
+   **Terminal 1** - Backend with database and hot reload:
    ```bash
    ./buildAndDev.sh
    ```
@@ -46,87 +89,161 @@ cd fullstack-starter
    ./frontendDev.sh
    ```
 
-   This approach provides:
-   - Backend hot reload (automatically restarts when you change backend code)
-   - Frontend hot reload (instantly reflects frontend changes)
+   This provides:
+   - Backend API with hot reload on http://localhost:3000/api
+   - Frontend development server on http://localhost:5001
    - PostgreSQL database running in Docker
-   - Separate terminal outputs for easier debugging
+   - Automatic database migrations on startup
 
-3. **For Production**: Start the full application:
+4. **Production Mode**:
    ```bash
    ./start.sh
    ```
 
-The application will be available at:
-- Frontend: http://localhost:3000 (development) or http://localhost:3000 (production)
-- Backend API: http://localhost:3000/api
-- Swagger Documentation: http://localhost:3000/api/docs
+### Application URLs
 
-## Development
+- **Frontend**: http://localhost:5001 (development) / http://localhost:3000 (production)
+- **Backend API**: http://localhost:3000/api
+- **API Documentation**: http://localhost:3000/api/docs
+- **Database**: PostgreSQL on localhost:5432 (containerized)
 
-### Backend Development
+## Project Structure
 
-- All new features should be organized in modules under `backend/src/modules/`
-- Follow the existing module structure:
-  ```
-  modules/feature-name/
-  ├── controllers/
-  ├── services/
-  ├── dto/
-  ├── entities/
-  └── feature-name.module.ts
-  ```
-- Use TypeScript DTOs for request/response validation
-- Add Swagger documentation for all new endpoints
-- Write e2e tests for new features
+```
+├── backend/                    # NestJS backend application
+│   ├── src/
+│   │   ├── modules/           # Feature modules (auth, database, etc.)
+│   │   ├── migrations/        # Database migration files
+│   │   └── config/           # Configuration files
+│   └── test/                 # E2E tests
+├── frontend/                  # React frontend application
+│   ├── src/
+│   │   ├── components/       # Reusable UI components
+│   │   ├── pages/           # Page components
+│   │   ├── lib/            # Utilities and services
+│   │   └── types/          # TypeScript type definitions
+├── epics/                    # Product requirements and development tracking
+│   └── EPIC_CoreDatabaseInfrastructure/  # Database implementation epic
+└── plans/                   # Project planning documents
+```
+
+## Development Workflow
+
+### Epic-Driven Development
+
+This project follows an Epic → Story → Task workflow managed in the `epics/` directory:
+
+- **Epics**: High-level feature sets (e.g., Core Database Infrastructure)
+- **Stories**: User-focused requirements with acceptance criteria
+- **Tasks**: Implementation-specific work items
+
+Current development is focused on **Epic 1: Core Database Infrastructure**, establishing the foundational data models for the payment network graph.
+
+### Database Development
+
+- **Migrations**: Located in `backend/src/migrations/`
+- **Auto-migration**: Migrations run automatically on application startup
+- **Cross-database**: Compatible with both PostgreSQL (production) and SQLite (testing)
+- **Naming**: Use timestamp prefixes: `YYYYMMDDHHMMSS_description.ts`
+
+### API Development
+
+- **Module Structure**: Each feature has its own module in `backend/src/modules/`
+- **API Prefix**: All endpoints use `/api` prefix
+- **Documentation**: Swagger docs auto-generated from decorators
+- **Validation**: TypeScript DTOs with class-validator
+- **Testing**: E2E tests in `backend/test/`
 
 ### Frontend Development
 
-- Components should be placed in `frontend/src/components/`
-- Use Tailwind CSS for styling
-- Follow the existing component structure and styling patterns
-- Utilize Shadcn UI components when possible
+- **Component Organization**: Feature-based structure in `frontend/src/components/`
+- **Styling**: Tailwind CSS with shadcn/ui components
+- **Type Safety**: Full TypeScript integration with backend DTOs
+- **Internationalization**: English and French translations required
+- **Theme System**: Centralized theme management in `lib/theme.ts`
 
-### Database Migrations
+## Available Scripts
 
-- Migrations are automatically run on application startup
-- Create new migrations in `backend/src/migrations/`
-- Use timestamp-prefixed names: `YYYYMMDDHHMMSS_description.ts`
-- Ensure migrations are compatible with both SQLite and PostgreSQL
+### Development Scripts
+- `./buildAndDev.sh` - Start backend with database and hot reload
+- `./frontendDev.sh` - Start frontend development server
+- `./test.sh` - Run all tests
+- `./build.sh` - Build both frontend and backend
+
+### Production Scripts
+- `./start.sh` - Start the complete application
+- `./stop.sh` - Stop all services
+- `./restart.sh` - Restart the application
+- `./buildAndRestart.sh` - Build and restart
+
+### Utility Scripts
+- `./testAndRestart.sh` - Run tests and restart if successful
+- `./stopDb.sh` - Stop only the database container
+
+## Current Development Status
+
+### ✅ Completed
+- Project foundation and development environment
+- Authentication system with JWT
+- Database infrastructure with PostgreSQL
+- Basic frontend structure with React + TypeScript
+- Development workflow and scripts
+
+### 🚧 In Progress (Epic 1: Core Database Infrastructure)
+- Legal Entity data model implementation
+- Payment Scheme data model
+- External Parties data model
+- Asset Nodes (accounts/wallets) data model
+- FX Nodes data model
+- Payment Methods (edges) data model
+
+### 📋 Planned
+- Reference data management APIs
+- Web-based management interface
+- Interactive graph visualization
+- Path discovery algorithms
+- Advanced filtering and search
+- Audit logging and administration
 
 ## Testing
 
-### Backend Tests
+### Backend Testing
 ```bash
 cd backend
-
-# Run e2e tests
-pnpm run test:e2e
-
-# Run test coverage
-pnpm run test:cov
+pnpm run test:e2e        # Run E2E tests
+pnpm run test:cov        # Run with coverage
 ```
 
-### Frontend Tests
+### Frontend Testing
 ```bash
 cd frontend
-pnpm run test
+pnpm run test           # Run component tests
 ```
 
-## Scripts
+## Contributing
 
-The project includes several utility scripts in the root directory:
+### Code Standards
+- **TypeScript**: Strict mode enabled, full type coverage required
+- **Linting**: ESLint + Prettier for consistent formatting
+- **Testing**: E2E tests for critical workflows, unit tests for utilities
+- **Documentation**: Swagger for APIs, JSDoc for complex functions
+- **Commits**: Conventional commit messages preferred
 
-- `./buildAndDev.sh` - Start backend with database and hot reload (for development)
-- `./frontendDev.sh` - Start frontend with hot reload (for development)
-- `./start.sh` - Start the application
-- `./stop.sh` - Stop the application
-- `./restart.sh` - Restart the application
-- `./build.sh` - Build both frontend and backend
-- `./test.sh` - Run all tests
-- `./buildAndRestart.sh` - Build and restart the application
-- `./testAndRestart.sh` - Run tests and restart if successful
+### Development Guidelines
+- Follow the Epic → Story → Task workflow in `epics/`
+- Always read existing code before implementing new features
+- Use shadcn/ui components for consistent styling
+- Implement proper error handling and loading states
+- Add translations for both English and French
+- Update API documentation for all new endpoints
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+**Project Type**: Payment Network Graph Modeling Tool  
+**Domain**: Financial Technology / Payment Processing  
+**Architecture**: Full-stack web application with graph database  
+**Status**: Active Development (Epic 1: Core Database Infrastructure)

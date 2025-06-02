@@ -35,7 +35,7 @@ completion_percentage: 85
 
 - [ ] STORY_03_ExternalPartiesDataModel
   - [ ] TASK_01_CreateExternalPartiesTable
-  - [ ] TASK_02_ImplementPartyValidation
+  - [ ] TASK_02_CreateExternalPartyEntity
   - [ ] TASK_03_CreateExternalPartyRepository
   - [ ] TASK_04_CreateExternalPartyService
   - [ ] TASK_05_CreateExternalPartyController

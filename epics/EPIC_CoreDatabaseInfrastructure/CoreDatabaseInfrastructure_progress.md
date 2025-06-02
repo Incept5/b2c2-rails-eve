@@ -1,16 +1,38 @@
+## Story and Task Checklist
+
+### Phase 1: Reference Data Foundation
+- [ ] STORY_01_LegalEntityDataModel
+  - [x] TASK_01_CreateLegalEntitiesMigration
+  - [x] TASK_02_CreateLegalEntityEntity
+  - [x] TASK_03_CreateLegalEntityRepository
+  - [ ] TASK_04_CreateLegalEntityService
+  - [ ] TASK_05_CreateLegalEntityController
+  - [ ] TASK_06_CreateLegalEntityModule
+=======
 ---
 type: "epic-progress"
 epic_name: "CoreDatabaseInfrastructure"
 last_updated: "2025-02-06"
 overall_status: "in_progress"
-completion_percentage: 65
+completion_percentage: 75
 ---
 
 # Core Database Infrastructure - Progress Tracking
 
 ## Overall Epic Status
-**Status**: In Progress - All stories created and ready for task breakdown
-**Completion**: 50% - All story definitions completed, ready for implementation
+**Status**: In Progress - STORY_01 Legal Entity Data Model completed
+**Completion**: 75% - First story fully implemented with REST API
+
+## Story and Task Checklist
+
+### Phase 1: Reference Data Foundation
+- [x] STORY_01_LegalEntityDataModel
+  - [x] TASK_01_CreateLegalEntitiesMigration
+  - [x] TASK_02_CreateLegalEntityEntity
+  - [x] TASK_03_CreateLegalEntityRepository
+  - [x] TASK_04_CreateLegalEntityService
+  - [x] TASK_05_CreateLegalEntityController
+  - [x] TASK_06_CreateLegalEntityModule
 =======
 
 ## Story and Task Checklist

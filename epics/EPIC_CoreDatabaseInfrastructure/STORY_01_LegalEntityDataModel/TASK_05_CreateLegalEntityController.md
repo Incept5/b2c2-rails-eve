@@ -5,7 +5,7 @@ story_id: "STORY_01_LegalEntityDataModel"
 epic_name: "CoreDatabaseInfrastructure"
 created_date: "2025-02-06"
 author: "Eve - AI Software Architect"
-status: "todo"
+status: "completed"
 ---
 
 # Task 5: Create Legal Entity REST Controller

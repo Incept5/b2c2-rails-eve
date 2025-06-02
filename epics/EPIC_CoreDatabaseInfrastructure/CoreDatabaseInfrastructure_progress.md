@@ -3,7 +3,7 @@ type: "epic-progress"
 epic_name: "CoreDatabaseInfrastructure"
 last_updated: "2025-02-06"
 overall_status: "in_progress"
-completion_percentage: 60
+completion_percentage: 65
 ---
 
 # Core Database Infrastructure - Progress Tracking
@@ -19,7 +19,7 @@ completion_percentage: 60
 - [ ] STORY_01_LegalEntityDataModel
   - [x] TASK_01_CreateLegalEntitiesMigration
   - [x] TASK_02_CreateLegalEntityEntity
-  - [ ] TASK_03_CreateLegalEntityRepository
+  - [x] TASK_03_CreateLegalEntityRepository
   - [ ] TASK_04_CreateLegalEntityService
   - [ ] TASK_05_CreateLegalEntityController
   - [ ] TASK_06_CreateLegalEntityModule

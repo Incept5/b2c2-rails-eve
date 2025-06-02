@@ -31,7 +31,7 @@ export const databaseConfig = registerAs('database', () => {
         port: parseInt(process.env.DB_PORT || '5432'),
         user: process.env.DB_USER || 'postgres',
         password: process.env.DB_PASSWORD || 'postgres',
-        database: process.env.DB_NAME || 'fullstack_starter',
+        database: process.env.DB_NAME || 'b2c2rails',
       },
       migrations: {
         directory: path.join(__dirname, '../migrations'),
@@ -49,7 +49,7 @@ export const databaseConfig = registerAs('database', () => {
         port: parseInt(process.env.DB_PORT || '5432'),
         user: process.env.DB_USER || 'postgres',
         password: process.env.DB_PASSWORD || 'postgres',
-        database: process.env.DB_NAME || 'fullstack_starter',
+        database: process.env.DB_NAME || 'b2c2rails',
       },
       migrations: {
         directory: path.join(__dirname, '../migrations'),

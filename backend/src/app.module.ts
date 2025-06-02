@@ -13,6 +13,7 @@ import { authConfig } from './config/auth.config';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: '../.env',
       load: [authConfig],
     }),
     LoggingModule,
